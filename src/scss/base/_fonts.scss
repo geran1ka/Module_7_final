@@ -1,0 +1,11 @@
+@font-face {
+  @include font('Lato', 400, 'lato-v24-latin')
+}
+
+@font-face {
+  @include font('Lato', 700, 'lato-v24-latin', 'Lato bold')
+}
+
+@font-face {
+  @include font('Lato', 900, 'lato-v24-latin', 'Lato heavy')
+}

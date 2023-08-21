@@ -1,0 +1,40 @@
+.logo {
+  width: 100%;
+  line-height: 0;
+  height: min-content;
+  padding: 10px 0;
+  outline-offset: 2px;
+  transition: color .3s ease-in-out,
+    transform .3s ease-in-out;
+
+  @include tablet {
+    max-height: 33px;
+    padding: 0;
+  }
+
+  @include mobile {
+    max-height: 27px;
+  }
+
+  path:last-child {
+    color: $blue;
+    transition: color .3s ease-in-out,
+    transform .3s ease-in-out;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  svg {
+    max-width: 190px;
+
+  @include tablet {
+          max-width: 165px;
+    }
+
+    @include mobile {
+      max-width: 114px;
+    }
+  }
+}

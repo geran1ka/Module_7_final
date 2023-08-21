@@ -1,0 +1,57 @@
+// шаблон
+%spanDiscount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: $orange;
+}
+
+%title3 {
+  font-weight: 700;
+  font-size: $fontsTitle3;
+  line-height: 130%;
+  color: inherit;
+}
+
+// переопределить
+
+
+
+%spanDiscount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: $orange;
+}
+
+%promoCardText {
+  font-family: Lato;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 130%;
+  color: $white;
+}
+
+%displayFlex {
+  position: relative;
+  display: flex;
+  align-items: end;
+}
+
+%background {
+  background: {
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  };
+}
