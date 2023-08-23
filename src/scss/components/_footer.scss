@@ -261,7 +261,7 @@
     }
 	}
 
-	&__contacts { //footer
+	&__contacts {
     grid-area: contacts;
     display: flex;
     flex-direction: column;
@@ -411,7 +411,6 @@
 
 	&__link {
       line-height: 0;
-      // color: $white;
       transition: color .3s ease-in-out,
       transform .3s ease-in-out;
       display: block;

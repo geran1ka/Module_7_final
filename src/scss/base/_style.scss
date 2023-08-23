@@ -129,17 +129,55 @@ fieldset {
 }
 
 .title-2 {
-  // color: var(--3, #2D2D2D);
-  // font-family: Lato;
-  font-size: $fontsTitle2;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 130%;
+
+  @include laptop {
+    font-size: 40px;
+  }
+
+  @include tablet {
+    font-size: 30px;
+  }
+
+  @include mobile {
+    font-size: 20px;
+  }
+}
+
+.title-3 {
+  // font-size: 32px;
+  font-size: $fontsTitle3;
   font-weight: 700;
   line-height: 130%;
 }
 
-.title-3 {
-  font-size: $fontsTitle3;
+.discount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  font-size: 30px;
   font-weight: 700;
-  line-height: 130%;
+  border-radius: 50%;
+  color: $white;
+  background-color: $orange;
+
+  @include tablet {
+    width: 60px;
+    height: 60px;
+    font-size: 20px
+  }
+
+  @include mobile {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
 }
 
 .none {

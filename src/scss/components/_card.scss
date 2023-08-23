@@ -1,0 +1,116 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  @include tablet {
+    gap: 10px;
+  }
+
+  @include mobile {
+    gap: 5px;
+  }
+
+  picture {
+    display: block;
+  }
+
+	&__title {
+    order: 2;
+    font-size: 22px;
+    line-height: 150%;
+
+    @include tablet {
+      font-size: 18px;
+    }
+
+    @include mobile {
+      font-size: 12px;
+    }
+	}
+
+	&__img-wrapper {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    line-height: 0;
+	}
+
+	&__img {
+    max-width: 420px;
+    max-height: 295px;
+    object-fit: cover;
+    border-radius: 14px;
+
+    @include laptop {
+      max-width: 300px;
+    }
+
+    @include tablet {
+      max-width: 220px;
+      max-height: 216px;
+      border-radius: 12px;
+    }
+
+    @include mobile {
+      max-width: 130px;
+      max-height: 130px;
+    }
+	}
+
+	&__discount {
+    bottom: 20px;
+    left: 20px;
+
+
+    @include tablet {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    @include mobile {
+      bottom: 6px;
+      left: 6px;
+    }
+	}
+
+	&__price-wrapper {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+
+    @include tablet {
+      gap: 16px;
+    }
+	}
+
+	&__price {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    color: $black;
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+    }
+	}
+
+	&__price-discount {
+    font-size: 20px;
+    line-height: 120%;
+    color: $black;
+    text-decoration: line-through;
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    @include mobile {
+      font-size: 12px;
+    }
+	}
+}

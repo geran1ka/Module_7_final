@@ -15,7 +15,7 @@ const createMenuItem = (title) => {
 
 export const createMenuList = (err, array) => {
   if (err) {
-    console.log(err);
+    alert(err);
     return;
   }
   return array.map(item => createMenuItem(item));

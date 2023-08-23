@@ -3,7 +3,7 @@ import {getCategory} from '../serviceAPI.js';
 import {createMenuList} from './createMenu.js';
 
 
-export const controllMenu = () => {
+export const renderMenu = () => {
   getCategory(createMenuList)
       .then(array => catalogList?.forEach(element => {
         element.append(...array);

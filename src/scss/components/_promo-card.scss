@@ -33,30 +33,11 @@
       @extend %displayFlex;
 
       padding: 20px;
-      background: linear-gradient(181deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
-      background: {
-        repeat: no-repeat;
-        size: cover;
-        position: center;
-      };
-
-      // background-image: url('../../img/block-1.jpg');
-      // background-image: image-set(
-      //   url('../../img/block-1.avif') 2x,
-      //   url('../../img/block-1.avif') 1x,
-      //   url('../../img/block-1.webp') 2x,
-      //   url('../../img/block-1.webp') 1x,
-      //   url('../../img/block-1.jpg') 2x,
-      //   url('../../img/block-1.jpg') 1x,
-      // );
-      // background-image: -webkit-image-set(
-      //   url('../../img/block-1.avif') 2x,
-      //   url('../../img/block-1.avif') 1x,
-      //   url('../../img/block-1.webp') 2x,
-      //   url('../../img/block-1.webp') 1x,
-      //   url('../../img/block-1.jpg') 2x,
-      //   url('../../img/block-1.jpg') 1x,
-      // );
+      // background: {
+      //   repeat: no-repeat;
+      //   size: cover;
+      //   position: center;
+      // };
 
       @include laptop {
         padding: 20px 12px 20px 9px;
@@ -70,7 +51,26 @@
         padding: 10px 30px 10px 1px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(181deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         @include laptop {
@@ -108,14 +108,32 @@
 
       align-items: start;
       padding: 78px 9px 20px;
-      background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
         position: center;
       };
+
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
       
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         @include laptop {
@@ -127,7 +145,7 @@
         }
 
         span {
-          @extend %promoCardDiscount;
+          // @extend %promoCardDiscount;
 
           bottom: 20px;
           right: 20px;
@@ -154,11 +172,30 @@
     &_card-three {
       @extend %displayFlex;
       
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         span {
-          @extend %promoCardDiscount;
+          // @extend %promoCardDiscount;
           top: 20px;
           left: 20px;
 
@@ -185,7 +222,6 @@
     &_card-four {
       @extend %displayFlex;
 
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
@@ -201,8 +237,26 @@
         padding: 10px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
 
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         padding: 24px 23px;
@@ -260,7 +314,6 @@
       @extend %displayFlex;
 
       padding: 30px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
@@ -275,7 +328,26 @@
         padding: 16px 10px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         font-size: 40px;
@@ -298,7 +370,6 @@
       @extend %displayFlex;
 
       padding: 30px 115px 30px 30px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
@@ -313,7 +384,26 @@
         padding: 16px 10px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         font-size: 40px;
@@ -332,7 +422,7 @@
         }
 
         span {
-          @extend %promoCardDiscount;
+          // @extend %promoCardDiscount;
   
           right: 20px;
           bottom: 20px;
@@ -360,7 +450,6 @@
       @extend %displayFlex;
 
       padding: 50px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
@@ -379,7 +468,26 @@
         padding: 10px 15px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.16) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         padding: 42px 32px;
         font-family: Lato;
         font-size: 40px;
@@ -412,18 +520,44 @@
 
     &_card-eight {
       @extend %displayFlex;
-      background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
         position: center;
       };
 
+      @include tablet {
+        grid-row: span 3;
+      }
+
+      @include mobile {
+        grid-row: span 2;
+      }
+
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         span {
-          @extend %promoCardDiscount;
+          // @extend %promoCardDiscount;
 
           bottom: 20px;
           right: 20px;
@@ -450,8 +584,8 @@
     &_card-nain {
       @extend %displayFlex;
 
+
       padding: 20px;
-      background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
@@ -462,11 +596,35 @@
         padding: 14px;
       }
 
+      @include tablet {
+        grid-row: span 2;
+      }
+
       @include mobile {
+        grid-row: span 1;
         padding: 10px;
       }
 
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
+
       p {
+        z-index: 2;
         @extend %promoCardText;
 
         @include laptop {
@@ -482,7 +640,7 @@
         }
 
         span {
-          @extend %promoCardDiscount;
+          // @extend %promoCardDiscount;
 
           top: 20px;
           left: 20px;
@@ -508,14 +666,32 @@
 
     &_card-ten {
       @extend %displayFlex;
-      background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray;
       background: {
         repeat: no-repeat;
         size: cover;
         position: center;
       };
+
+      &::before {
+        @extend %before;
+        border-radius: $radius;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%);
+
+        @include laptop {
+          border-radius: 16px;
+        }
+    
+        @include tablet {
+          border-radius: 12px;
+        }
+    
+        @include mobile {
+          border-radius: 8px;
+        }
+      }
       
       p {
+        z-index: 2;
         @extend %promoCardText;
       }
     }

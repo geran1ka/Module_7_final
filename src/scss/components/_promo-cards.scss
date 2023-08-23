@@ -76,13 +76,14 @@
 
     &_asymm-rows-small {
       @include tablet {
+        grid-template-rows: repeat(3, 1fr);
         grid-row: span 3;
       }
       @include mobile {
         grid-row: span 1;
+        grid-template-rows: repeat(2, 1fr);
       }
     }
-
   }
 }
 
