@@ -1,28 +1,28 @@
-import {createElem} from './createElem.js';
+import {createElement} from '../../helper/createElement.js';
 
 export const createArticle = async (data) => {
   const userId = data.data.user_id;
 
   const authorName = await (await fetch(`https://gorest.co.in/public-api/users/${userId}`)).json();
 
-  const articleMain = createElem('div', {
+  const articleMain = createElement('div', {
     className: 'article-main',
   });
 
-  const container = createElem('container', {
+  const container = createElement('container', {
     className: 'article-main__container',
   });
 
-  const articleTitle = createElem('h2', {
+  const articleTitle = createElement('h2', {
     className: 'article-main__title',
     textContent: data.data.title,
   });
 
-  const articleContent = createElem('div', {
+  const articleContent = createElement('div', {
     className: 'article-main__content',
   });
 
-  const firstParagraf = createElem('p', {
+  const firstParagraf = createElement('p', {
     className: 'article-main__text',
     textContent: data.data.body,
   });
@@ -31,19 +31,19 @@ export const createArticle = async (data) => {
   container.append(articleTitle, articleContent);
   articleMain.append(container);
 
-  const footer = createElem('footer', {
+  const footer = createElement('footer', {
     className: 'article-footer',
   });
 
-  const footerContainer = createElem('div', {
+  const footerContainer = createElement('div', {
     className: 'article-main__container article-footer__container',
   });
 
-  const footerNavigation = createElem('div', {
+  const footerNavigation = createElement('div', {
     className: 'article-footer__navigation',
   });
 
-  const footerLink = createElem('a', {
+  const footerLink = createElement('a', {
     className: 'article-footer__link',
     href: '#',
     textContent: 'К списку статей',
@@ -57,27 +57,27 @@ export const createArticle = async (data) => {
     className: 'article-footer__development',
   });
 
-  const author = createElem('p', {
+  const author = createElement('p', {
     className: 'article-footer__author',
     textContent: authorName.data.name ? authorName.data.name : 'Аноним',
   });
 
-  const footerInfoWrapper = createElem('div', {
+  const footerInfoWrapper = createElement('div', {
     className: 'article-footer__info',
   });
 
-  const footerDate = createElem('div', {
+  const footerDate = createElement('div', {
     className: 'article-footer__date',
     innerHTML: `
       <p>22 октября 2021, 12:45</p>
     `,
   });
 
-  const footerCountWrapper = createElem('div', {
+  const footerCountWrapper = createElement('div', {
     className: 'article-footer__count-wrapper',
   });
 
-  const footerViewsLink = createElem('a', {
+  const footerViewsLink = createElement('a', {
     className: 'article-footer__views-link',
     href: `#`,
     innerHTML: `
@@ -89,7 +89,7 @@ export const createArticle = async (data) => {
     `,
   });
 
-  const footerCommentLink = createElem('a', {
+  const footerCommentLink = createElement('a', {
     className: 'article-footer__views-link',
     href: `#`,
     innerHTML: `
