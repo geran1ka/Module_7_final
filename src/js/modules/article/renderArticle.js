@@ -1,24 +1,20 @@
-import {createElem} from './createElem.js';
-import {API_URL_POST} from './const.js';
 import {createAside} from './createAside.js';
 import {createArticle} from './createAticle.js';
-import {getDataArticle} from './serviceApi.js';
+import {createElement} from '../../helper/createElement.js';
 
-export const renderArticle = async () => {
-  const idU = window.location.search.slice(4);
-  const data = await getDataArticle(API_URL_POST, idU);
-  const article = createElem('article', {
-    className: 'article',
+export const renderArticle = async (data) => {
+  const section = createElement('section', {
+    className: 'section-article',
   });
 
-  const container = createElem('div', {
-    className: 'container article-container',
+  const container = createElement('div', {
+    className: 'container section-article__container ',
   });
 
-  const {articleMain, footer} = await createArticle(data);
+  const article = await createArticle(data);
   const aside = createAside();
-  container.append(articleMain, footer, aside);
-  article.append(container);
+  container.append(article, aside);
+  section.append(container);
 
-  return article;
+  return section;
 };

@@ -1,4 +1,4 @@
-import {URL} from '../helper/const.js';
+import {API_URL_USERS, URL} from '../helper/const.js';
 import {fetchRequest} from '../helper/fetchRequest.js';
 
 
@@ -83,3 +83,10 @@ export const getDataArticle = async (url, id = '') => {
   const data = await result.json();
   return data;
 };
+
+export const getAuthorArticle = async (url, id = '') => {
+  const result = await fetch(`${url}/${id}`);
+  const data = await result.json();
+  return data;
+};
+
