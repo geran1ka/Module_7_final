@@ -5,7 +5,7 @@ export const API_URL_USER = 'https://gorest.co.in/public-api/user';
 export const API_URL_USERS = 'https://gorest.co.in/public-api/users';
 
 const catalogList = document.querySelectorAll('.menu__catalog-list');
-
+const main = document.querySelector('.main');
 // const page = document.querySelector('.page');
 // const table = document.querySelector('.table');
 // const tableBody = table.querySelector('.table__body');
@@ -16,6 +16,7 @@ const catalogList = document.querySelectorAll('.menu__catalog-list');
 export {
   URL,
   catalogList,
+  main,
   // page,
   // table,
   // tableBody,
