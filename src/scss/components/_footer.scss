@@ -21,7 +21,7 @@
 
 	&__container {
     display: grid;
-    grid-template-columns: minmax(190px, 2fr) minmax(480px, 4fr) minmax(245px, 3fr) minmax(245px, 3fr);
+    grid-template-columns: minmax(190px, 2fr) minmax(540px, 4fr) minmax(245px, 3fr) minmax(245px, 3fr);
     grid-template-rows: minmax(min-content, 1fr) min-content;
     grid-template-areas: 
       'logo catalog info contacts'

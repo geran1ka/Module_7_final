@@ -3,67 +3,39 @@ import {getGoodsCategory} from '../serviceAPI.js';
 import {createGoodsItem} from './createGoodsItem.js';
 
 const render = (err, array) => {
-  if (err) console.warn(err);
+  if (err) {
+    console.warn(err);
+    return;
+  }
 
-  const list = array.map(item => createGoodsItem(item));
-  console.log('list: ', list);
-  return list;
+
+  return array.map(item => createGoodsItem(item));
 };
 
 
-export const renderShop = async () => {
-  const category = 'Игрушки';
-
+export const renderShop = (category) => {
   const section = createElement('section', {
-    className: 'category-goods',
+    className: 'category-goods goods-discount',
   });
 
   const container = createElement('div', {
-    className: 'container category-goods__container',
+    className: 'container category-goods__container goods-discount__container',
   });
 
   const title = createElement('h2', {
-    className: 'category-goods__title title-2',
+    className: 'category-goods__title title-2 goods-discount__title',
     textContent: category,
   });
 
   const categoryGoodsList = createElement('ul', {
-    className: 'category-goods__list',
+    className: 'category-goods__list goods-discount__list',
   });
 
   container.append(title, categoryGoodsList);
   section.append(container);
 
-
   getGoodsCategory(render, category)
-      .then(array => array.map(item => console.log(item)));
+      .then(array => categoryGoodsList.append(...array));
+
+  return section;
 };
-
-
-// category
-// :
-// "Игрушки"
-// count
-// :
-// 1
-// description
-// :
-// "Внедорожник на дистанционном управлении. Скорость 25км/ч. Возраст 7 - 14 лет"
-// discount
-// :
-// 5
-// id
-// :
-// "6300524222"
-// image
-// :
-// "image/6300524222.jpg"
-// price
-// :
-// 6000
-// title
-// :
-// "Радиоуправляемый автомобиль Cheetan"
-// units
-// :
-// "шт"

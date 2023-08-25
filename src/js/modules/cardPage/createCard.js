@@ -1,6 +1,11 @@
-import { createElement } from '../../helper/createElement.js';
+import {URL} from '../../helper/const.js';
+import {createElement} from '../../helper/createElement.js';
 
-export const createCard = (data) => {
+export const createCard = (err, data) => {
+  if (err) {
+    console.warn(err);
+    return;
+  }
   const card = createElement('section', {
     className: 'card-item',
   }, {
@@ -15,17 +20,13 @@ export const createCard = (data) => {
         createElement('div', {
           className: 'card-item__img-wrapper',
           innerHTML: `
-            <picture>
-              <source srcset="./img/card/cardNout.avif" type="image/avif">
-              <source src="./img/card/cardNout.wepb" type="image/webp">
-              <img 
-                class="card-item__img" .
-                src="./img/card/cardNout.jpg" 
-                alt="${data.title}" 
-                width="757px" 
-                height="427px"
-              >
-            </picture>
+            <img 
+              class="card-item__img" .
+              src="${URL}/${data.image}" 
+              alt="${data.title}" 
+              width="757px" 
+              height="427px"
+            >
             ${data.discount ? `<p class="discount card-item__discount">${data.discount}%</p>` : ''}
           `,
         }),

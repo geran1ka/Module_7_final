@@ -46,13 +46,16 @@ export const getCategory = (callback) => fetchRequest(`${URL}/api/category`, {
   callback,
 });
 
-export const getGoodsCategory = (callback, category) => {
-  console.log('category', category);
-  fetchRequest(`${URL}/api/goods/category/${category}`, {
-    method: 'get',
-    callback,
-  });
-};
+export const getGoodsCategory = (callback, category) => fetchRequest(`${URL}/api/goods/category/${category}`, {
+  method: 'get',
+  callback,
+});
+
+export const getGoodsId = (callback, id) => fetchRequest(`${URL}/api/goods/${id}`, {
+  method: 'get',
+  callback,
+});
+
 
 // export const getDataSearch = (callback, search) => fetchRequest(`${URL}/api/goods?search=${search}`, {
 //   method: 'get',

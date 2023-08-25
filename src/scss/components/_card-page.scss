@@ -120,6 +120,12 @@
     }
   }
 
+  &__img {
+    object-fit: contain;
+    max-height: 427px;
+    object-position: top;
+  }
+
   &__discount {
     color: $white;
     top: 20px;

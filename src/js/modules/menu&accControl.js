@@ -23,6 +23,7 @@ const closeMenuA = () => {
   icon.removeClass('icon_active');
   menuBtn.removeClass('header__btn-menu_active');
   menu.slideUp();
+
   scrollController.enabledScroll();
 };
 
@@ -34,13 +35,10 @@ export const menuControll = () => {
   // });
 
   $('body').on('click', (e) => {
-    console.log('click');
     if (e.target === menuBtn[0]) {
       if (e.target.closest('.header__btn-menu_active')) {
-        console.log('closeMenuA');
-        closeMenuA();
+          closeMenuA();
       } else {
-        console.log('openMenuA');
         openMenuA();
       }
     } else if (

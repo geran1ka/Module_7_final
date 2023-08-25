@@ -8,8 +8,14 @@ const createItemCatalogMenu = (title) => {
   }, {
     append: createElement('a', {
       className: 'menu__catalog-link',
-      href: '#',
+      href: `#shop/${title}`,
       textContent: title,
+    }, {
+      cb(elem) {
+        elem.addEventListener('click', () => {
+          console.log('clicl3');
+        });
+      },
     }),
   });
   return li;
@@ -25,8 +31,12 @@ const createMenuList = (err, array) => {
 
 export const renderMenuCatalog = () => {
   getCategory(createMenuList)
-      .then(array => catalogList?.forEach(element => {
-        element.append(...array);
-      }));
+      .then(array => {
+        catalogList[0].textContent = '';
+        catalogList[1].textContent = '';
+        catalogList[0].append(...array);
+        catalogList[1].append(catalogList[0].cloneNode(true));
+      },
+      );
 };
 
