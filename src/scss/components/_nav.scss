@@ -41,14 +41,34 @@
     }
 
   }
+
+  &__svg-wrapper {
+    position: relative;
+    line-height: 0;
+  }
   
   &__svg {
+
     stroke-width: 3px;
     transition: color .3s ease-in-out;
 
     @include tablet {
       height: 30px;
       width: 30px;
+    }
+
+    &_count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      color: $blue;
+      background-color: $white;
     }
 
     &_heart {

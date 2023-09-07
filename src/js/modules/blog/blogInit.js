@@ -1,13 +1,14 @@
 import {API_URL_POST, main} from '../../helper/const.js';
-import {getDataArticle} from '../serviceAPI.js';
+import { getDataBlog } from '../serviceAPI.js';
 import {renderBlog} from './renderBlog.js';
 
-export const blogInit = async () => {
-  // const pageBlog = document.querySelector('.blog-page');
+export const blogInit = async (currentLocation) => {
   main.textContent = '';
-  const search = window.location.search;
-  const data = await getDataArticle(API_URL_POST, search);
+  const search = currentLocation?.queryString || '';
 
+  const data = await getDataBlog(API_URL_POST, search);
   const blog = renderBlog(data);
   main?.append(blog);
+
+  console.log('blogInit');
 };

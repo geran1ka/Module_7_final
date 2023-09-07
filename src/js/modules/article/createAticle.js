@@ -41,14 +41,8 @@ export const createArticle = async ({data}) => {
             }, {
               append: createElement('a', {
                 className: 'article-footer__link',
-                href: '#',
+                href: '#blog',
                 textContent: 'К списку статей',
-              }, {
-                cb(elem) {
-                  addEventListener('click', e => {
-                    window.history.back();
-                  });
-                },
               }),
             }),
             createElement('div', {

@@ -1,84 +1,138 @@
-import {URL} from '../../helper/const.js';
+import {URL, cartCountItem} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
+import {dateDelivery} from '../../helper/dateDelivery.js';
+import {loanCalculation} from '../../helper/loanСalculation.js';
+import {addCart, getCart, removeCart} from '../cart/cartController.js';
+import {addFavorite, getFavorite, removeFavorite} from '../favoriteController.js';
 
 export const createCard = (err, data) => {
+  const getCheckItemCart = (id) => {
+    const listCart = getCart();
+    return listCart.some(item => item.id === id);
+  };
+  getCheckItemCart(data.id);
+
   if (err) {
     console.warn(err);
     return;
   }
   const card = createElement('section', {
-    className: 'card-item',
+    className: 'card',
   }, {
     append: createElement('div', {
-      className: 'container card-item__container',
+      className: 'container card__container',
     }, {
       appends: [
         createElement('h2', {
-          className: 'card-item__title',
+          className: 'card__title',
           textContent: data.title,
         }),
         createElement('div', {
-          className: 'card-item__img-wrapper',
+          className: 'card__img-wrapper',
           innerHTML: `
             <img 
-              class="card-item__img" .
+              class="card__img" .
               src="${URL}/${data.image}" 
               alt="${data.title}" 
               width="757px" 
               height="427px"
             >
-            ${data.discount ? `<p class="discount card-item__discount">${data.discount}%</p>` : ''}
+            ${data.discount ? `<p class="discount card__discount">${data.discount}%</p>` : ''}
           `,
         }),
         createElement('div', {
-          className: 'card-item__book',
+          className: 'card__book',
         }, {
           appends: [
             createElement('div', {
-              className: 'card-item__price-wrapper',
+              className: 'card__price-wrapper',
             }, {
               appends: [
                 createElement('p', {
-                  className: 'card-item__price',
+                  className: 'card__price',
                 }, {
                   appends: [
                     createElement('span', {
-                      className: 'card-item__price-new',
+                      className: data.discount ? 'card__price-new' : 'card__price-new card__price-new_black',
                       textContent: data.discount ?
                         `${(data.price - (data.price * data.discount / 100))} ₽` :
                         `${data.price} ₽`,
                     }),
                     createElement('span', {
-                      className: 'card-item__price-old',
+                      className: 'card__price-old',
                       textContent: data.discount ? `${data.price} ₽` : '',
                     }),
                   ],
                 }),
                 createElement('p', {
-                  className: 'card-item__price-credit',
-                  textContent: 'В кредит от 5600 ₽',
+                  className: 'card__price-credit',
+                  textContent: `В кредит от 
+                    ${loanCalculation(data.discount ? data.price - (data.price * data.discount / 100) : data.price)} ₽`,
                 }),
               ],
             }),
             createElement('div', {
-              className: 'card-item__btn-wrapper',
+              className: 'card__btn-wrapper',
             }, {
               appends: [
                 createElement('button', {
-                  className: 'card-item__btn-cart',
+                  className: getCheckItemCart(data.id) ? 'card__btn-cart card__btn-del' : 'card__btn-cart ',
                   type: 'button',
-                  textContent: 'Добавить в корзину',
+                  textContent: getCheckItemCart(data.id) ? 'Удалить из корзины' : 'Добавить в корзину',
+                }, {
+                  cb(elem) {
+                    elem.addEventListener('click', () => {
+                      if (elem.closest('.card__btn-del')) {
+                        console.log('remove');
+                        removeCart(data.id);
+                        elem.classList.remove('card__btn-del');
+                        elem.textContent = 'Добавить в корзину';
+                      } else {
+                        addCart(data);
+                        elem.classList.add('card__btn-del');
+                        console.log('add');
+                        elem.textContent = 'Удалить из корзины';
+                      }
+                    });
+                  },
                 }),
                 createElement('button', {
-                  className: 'card-item__btn-favorite',
+                  className: `card__btn-favorite 
+                    ${getFavorite().find(item => item.id === data.id) ?
+                      'card__btn-favorite_active' : ''}`,
                   ariaLabel: 'Добавить в избранное',
+                  dataSetId: data.id,
                   innerHTML: `
-                  <svg class="card-item__svg-favorite" width="33" height="33" viewBox="0 0 33 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_901_1437)">
-                    <path d="M22.6875 4.125C20.295 4.125 17.9987 5.23875 16.5 6.99875C15.0012 5.23875 12.705 4.125 10.3125 4.125C6.0775 4.125 2.75 7.4525 2.75 11.6875C2.75 16.885 7.425 21.12 14.5062 27.555L16.5 29.3563L18.4937 27.5413C25.575 21.12 30.25 16.885 30.25 11.6875C30.25 7.4525 26.9225 4.125 22.6875 4.125ZM16.6375 25.5062L16.5 25.6437L16.3625 25.5062C9.8175 19.58 5.5 15.6613 5.5 11.6875C5.5 8.9375 7.5625 6.875 10.3125 6.875C12.43 6.875 14.4925 8.23625 15.2212 10.12H17.7925C18.5075 8.23625 20.57 6.875 22.6875 6.875C25.4375 6.875 27.5 8.9375 27.5 11.6875C27.5 15.6613 23.1825 19.58 16.6375 25.5062Z"/>
+
+
+                  <svg width="36" height="36" viewBox="0 0 36 36" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_2423_41)">
+                    <path d="M18 32.025L15.825 30.045C8.1 23.04 3 18.42 3 12.75C3 8.13 6.63 4.5 11.25 4.5C13.86 4.5 16.365 5.715 18 7.635C19.635 5.715 22.14 4.5 24.75 4.5C29.37 4.5 33 8.13 33 12.75C33 18.42 27.9 23.04 20.175 30.06L18 32.025Z"/>
                     </g>
+                    <defs>
                   </svg>
+
                   `,
+                }, {
+                  cb(elem) {
+                    elem.setAttribute('data-id', data.id);
+                    elem.addEventListener('click', (e) => {
+                      const target = e.target;
+
+                      if (target.closest('.card__btn-favorite_active')) {
+                        removeFavorite(data.id);
+                        elem.classList.remove('card__btn-favorite_active');
+                        return;
+                      }
+
+                      if (target.closest('.card__btn-favorite')) {
+                        addFavorite(data);
+                        elem.classList.add('card__btn-favorite_active');
+                        return;
+                      }
+                      console.log('favorite');
+                    });
+                  },
                 }),
               ],
             }),
@@ -92,7 +146,7 @@ export const createCard = (err, data) => {
                 }, {
                   append: createElement('span', {
                     className: 'card__delivery-date',
-                    textContent: '1-3 января',
+                    textContent: dateDelivery(),
                   }),
                 }),
                 createElement('p', {

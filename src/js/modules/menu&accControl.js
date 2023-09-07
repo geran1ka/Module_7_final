@@ -28,25 +28,19 @@ const closeMenuA = () => {
 };
 
 export const menuControll = () => {
-  // menuBtn[0].addEventListener('click', () => {
-  //   icon.toggleClass('icon_active');
-  //   menu.slideToggle();
-  //   menu.css({display: 'grid'});
-  // });
-
   $('body').on('click', (e) => {
     if (e.target === menuBtn[0]) {
       if (e.target.closest('.header__btn-menu_active')) {
-          closeMenuA();
+        closeMenuA();
       } else {
         openMenuA();
       }
     } else if (
-      e.target.closest('.menu__info-link') ||
+
+      e.target.closest('.menu__catalog-link') ||
       e.target.closest('.menu__info-link') ||
       e.target.closest('.menu__contacts-link')
     ) {
-      console.log('end');
       closeMenuA();
     }
   });

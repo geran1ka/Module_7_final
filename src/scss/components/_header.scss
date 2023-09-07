@@ -169,6 +169,10 @@
       column-gap: 20px;
       padding: 20px;
     }
+
+    &_active {
+      transform: translateY(0);
+    }
   }
   
   &__form {

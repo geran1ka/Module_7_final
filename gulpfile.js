@@ -1,4 +1,4 @@
-'use strict';
+
 
 // gulp
 import gulp from 'gulp';
@@ -6,7 +6,7 @@ import gulpif from 'gulp-if';
 import browserSync from 'browser-sync';
 import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
-import { deleteSync } from 'del';
+import {deleteSync} from 'del';
 
 // html*pug
 import htmlmin from 'gulp-htmlmin';
@@ -22,14 +22,14 @@ import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import gcmq from 'gulp-group-css-media-queries';
-import { stream as critical } from 'critical';
+import {stream as critical} from 'critical';
 
 // js
 import terser from 'gulp-terser';
 import webpackStream from 'webpack-stream';
 import webpack from 'webpack';
 
-//img
+// img
 import tinypng from 'gulp-tinypng-compress';
 import gulpImg from 'gulp-image';
 import gulpWebp from 'gulp-webp';
@@ -75,85 +75,85 @@ const path = {
   },
 };
 
-//html
+// html
 
 export const html = () =>
   gulp
-    .src(path.src.html)
-    .pipe(
-      gulpif(
-        !dev,
-        htmlmin({
-          removeComments: true,
-          collapseWhitespace: true,
-        }),
-      ),
-    )
-    .pipe(gulp.dest(path.dist.html))
-    .pipe(browserSync.stream());
+      .src(path.src.html)
+      .pipe(
+          gulpif(
+              !dev,
+              htmlmin({
+                removeComments: true,
+                collapseWhitespace: true,
+              }),
+          ),
+      )
+      .pipe(gulp.dest(path.dist.html))
+      .pipe(browserSync.stream());
 
-//pug
+// pug
 export const pug = () =>
   gulp
-    .src(path.src.pug)
-    .pipe(
-      gulppug({
-        pretty: true,
-      }).on('error', function (err) {
-        console.log(err.toString());
-        this.emit('end');
-      }),
-    )
-    .pipe(gulpif(!dev, gulp.dest(path.dist.html)))
-    .pipe(
-      gulpif(
-        dev,
-        prettyHtml(),
-        htmlmin({
-          removeComments: true,
-          collapseWhitespace: true,
-        }),
-      ),
-    )
-    .pipe(gulp.dest(path.dist.html))
-    .pipe(browserSync.stream());
+      .src(path.src.pug)
+      .pipe(
+          gulppug({
+            pretty: true,
+          }).on('error', function(err) {
+            console.log(err.toString());
+            this.emit('end');
+          }),
+      )
+      .pipe(gulpif(!dev, gulp.dest(path.dist.html)))
+      .pipe(
+          gulpif(
+              dev,
+              prettyHtml(),
+              htmlmin({
+                removeComments: true,
+                collapseWhitespace: true,
+              }),
+          ),
+      )
+      .pipe(gulp.dest(path.dist.html))
+      .pipe(browserSync.stream());
 
 // css
 
 export const scss = () =>
   gulp
-    .src(path.src.scss)
-    .pipe(gulpif(dev, sourcemaps.init()))
-    .pipe(compSass().on('error', compSass.logError))
-    .pipe(
-      gulpif(
-        !dev,
-        autoprefixer({
-          cascade: false,
-          grid: false,
-        }),
-      ),
-    )
-    .pipe(gulpif(!dev, gcmq()))
-    .pipe(gulpif(!dev, gulp.dest(path.dist.css)))
-    .pipe(
-      gulpif(
-        !dev,
-        cleanCSS({
-          2: {
-            specialComments: 0,
-          },
-        }),
-      ),
-    )
-    .pipe(
-      rename({
-        suffix: '.min',
-      }),
-    )
-    .pipe(gulpif(dev, sourcemaps.write()))
-    .pipe(gulp.dest(path.dist.css))
-    .pipe(browserSync.stream());
+      .src(path.src.scss)
+      .pipe(gulpif(dev, sourcemaps.init()))
+      .pipe(compSass().on('error', compSass.logError))
+      .pipe(
+          gulpif(
+              !dev,
+              autoprefixer({
+                cascade: false,
+                grid: false,
+              }),
+          ),
+      )
+      .pipe(gulpif(!dev, gcmq()))
+      .pipe(gulpif(!dev, gulp.dest(path.dist.css)))
+      .pipe(
+          gulpif(
+              !dev,
+              cleanCSS({
+                2: {
+                  specialComments: 0,
+                },
+              }),
+          ),
+      )
+      .pipe(
+          rename({
+            suffix: '.min',
+          }),
+      )
+      .pipe(gulpif(dev, sourcemaps.write()))
+      .pipe(gulp.dest(path.dist.css))
+      .pipe(browserSync.stream());
 
 // js
 
@@ -181,131 +181,131 @@ if (!dev) {
 
 export const js = () =>
   gulp
-    .src(path.src.js)
-    .pipe(plumber())
-    .pipe(webpackStream(webpackConf, webpack))
-    .pipe(gulpif(!dev, gulp.dest(path.dist.js)))
-    .pipe(gulpif(!dev, terser()))
-    .pipe(
-      rename({
-        suffix: '.min',
-      }),
-    )
-    .pipe(gulp.dest(path.dist.js))
-    .pipe(browserSync.stream());
+      .src(path.src.js)
+      .pipe(plumber())
+      .pipe(webpackStream(webpackConf, webpack))
+      .pipe(gulpif(!dev, gulp.dest(path.dist.js)))
+      .pipe(gulpif(!dev, terser()))
+      .pipe(
+          rename({
+            suffix: '.min',
+          }),
+      )
+      .pipe(gulp.dest(path.dist.js))
+      .pipe(browserSync.stream());
 
 export const img = () =>
   gulp
-    .src(path.src.img)
-    // .pipe(gulpif(!dev, tinypng({
-    // 	key: 'API_KEY',
-    // 	summarize: true,
-    // 	log: true
-    // })))
-    .pipe(
-      gulpif(
-        !dev,
-        gulpImg({
-          optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
-          pngquant: ['--speed=1', '--force', 256],
-          zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
-          jpegRecompress: [
-            '--strip',
-            '--quality',
-            'medium',
-            '--min',
-            40,
-            '--max',
-            80,
-          ],
-          mozjpeg: ['-optimize', '-progressive'],
-          gifsicle: ['--optimize'],
-          svgo: true,
-        }),
-      ),
-    )
-    .pipe(gulp.dest(path.dist.img))
-    .pipe(
-      browserSync.stream({
-        once: true,
-      }),
-    );
+      .src(path.src.img)
+  // .pipe(gulpif(!dev, tinypng({
+  // 	key: 'API_KEY',
+  // 	summarize: true,
+  // 	log: true
+  // })))
+      .pipe(
+          gulpif(
+              !dev,
+              gulpImg({
+                optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
+                pngquant: ['--speed=1', '--force', 256],
+                zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
+                jpegRecompress: [
+                  '--strip',
+                  '--quality',
+                  'medium',
+                  '--min',
+                  40,
+                  '--max',
+                  80,
+                ],
+                mozjpeg: ['-optimize', '-progressive'],
+                gifsicle: ['--optimize'],
+                svgo: true,
+              }),
+          ),
+      )
+      .pipe(gulp.dest(path.dist.img))
+      .pipe(
+          browserSync.stream({
+            once: true,
+          }),
+      );
 
 export const svg = () =>
   gulp
-    .src(path.src.svg)
-    .pipe(
-      svgSprite({
-        mode: {
-          stack: {
-            sprite: '../sprite.svg',
-          },
-        },
-      }),
-    )
-    .pipe(gulp.dest(path.dist.img))
-    .pipe(
-      browserSync.stream({
-        once: true,
-      }),
-    );
+      .src(path.src.svg)
+      .pipe(
+          svgSprite({
+            mode: {
+              stack: {
+                sprite: '../sprite.svg',
+              },
+            },
+          }),
+      )
+      .pipe(gulp.dest(path.dist.img))
+      .pipe(
+          browserSync.stream({
+            once: true,
+          }),
+      );
 
 export const webp = () =>
   gulp
-    .src(path.src.imgF)
-    .pipe(
-      gulpWebp({
-        quality: dev ? 100 : 60,
-      }),
-    )
-    .pipe(gulp.dest(path.dist.img))
-    .pipe(
-      browserSync.stream({
-        once: true,
-      }),
-    );
+      .src(path.src.imgF)
+      .pipe(
+          gulpWebp({
+            quality: dev ? 100 : 60,
+          }),
+      )
+      .pipe(gulp.dest(path.dist.img))
+      .pipe(
+          browserSync.stream({
+            once: true,
+          }),
+      );
 
 export const avif = () =>
   gulp
-    .src(path.src.imgF)
-    .pipe(
-      gulpAvif({
-        quality: dev ? 100 : 50,
-      }),
-    )
-    .pipe(gulp.dest(path.dist.img))
-    .pipe(
-      browserSync.stream({
-        once: true,
-      }),
-    );
+      .src(path.src.imgF)
+      .pipe(
+          gulpAvif({
+            quality: dev ? 100 : 50,
+          }),
+      )
+      .pipe(gulp.dest(path.dist.img))
+      .pipe(
+          browserSync.stream({
+            once: true,
+          }),
+      );
 
 export const critCSS = () =>
   gulp
-    .src(path.src.html)
-    .pipe(
-      critical({
-        base: path.dist.base,
-        inline: true,
-        css: [path.dist.cssIndex],
-      }),
-    )
-    .on('error', (err) => {
-      console.error(err.message);
-    })
-    .pipe(gulp.dest(path.dist.base));
+      .src(path.src.html)
+      .pipe(
+          critical({
+            base: path.dist.base,
+            inline: true,
+            css: [path.dist.cssIndex],
+          }),
+      )
+      .on('error', (err) => {
+        console.error(err.message);
+      })
+      .pipe(gulp.dest(path.dist.base));
 
 export const copy = () =>
   gulp
-    .src(path.src.assets, {
-      base: path.src.base,
-    })
-    .pipe(gulp.dest(path.dist.base))
-    .pipe(
-      browserSync.stream({
-        once: true,
-      }),
-    );
+      .src(path.src.assets, {
+        base: path.src.base,
+      })
+      .pipe(gulp.dest(path.dist.base))
+      .pipe(
+          browserSync.stream({
+            once: true,
+          }),
+      );
 
 export const server = () => {
   browserSync.init({

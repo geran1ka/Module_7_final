@@ -1,5 +1,6 @@
 import { main } from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
+import { goodsDiscountInit } from './goodsDiscountInit.js';
 
 const heroInit = () => createElement('section', {
   className: 'hero',
@@ -203,40 +204,13 @@ const promoCardsInit = () => createElement('section', {
     `,
 });
 
-const goodsDiscountInit = () => createElement('section', {
-  className: 'goods-discount',
-  innerHTML: `
-      <div class="goods-discount__container container">
-        <h2 class="goods-discount__title title-2">Это выгодно!</h2>
-        <ul class="goods-discount__list">
-          <li class="goods-discount__item">
-            <article class="card">
-              <h3 class="card__title">Пара футболок</h3>
-              <a href="#card" class="card__img-wrapper">
-                <picture>
-                  <source srcset="./img/goods/photoOne.avif" type="image/avif">
-                  <source srcset="./img/goods/photoOne.webp" type="image/webp">
-                  <img class="card__img" loading="lazy" src="./img/goods/photoOne.jpg" alt="Пара футболок" width="420px" height="295px">
-                </picture>
-                <span class="card__discount discount">-50%</span>
-              </a>
-  
-              <div class="card__price-wrapper">
-                <p class="card__price">1299 ₽</p>
-                <p class="card__price-discount">2598 ₽</p>
-              </div>  
-            </article>
-          </li>
-        </ul>
-      </div>
-    `,
-});
 
-export const mainPage = () => {
+export const mainPage = async () => {
   main.textContent = '';
   const hero = heroInit();
   const promo = promoCardsInit();
-  const goodsDiscount = goodsDiscountInit();
+  const goodsDiscount = await goodsDiscountInit();
+
 
   main.append(hero, promo, goodsDiscount);
 };

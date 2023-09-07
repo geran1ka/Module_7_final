@@ -56,11 +56,16 @@ export const getGoodsId = (callback, id) => fetchRequest(`${URL}/api/goods/${id}
   callback,
 });
 
+export const getGoodsDiscount = (callback) => fetchRequest(`${URL}/api/goods/discount?4`, {
+  method: 'get',
+  callback,
+});
 
-// export const getDataSearch = (callback, search) => fetchRequest(`${URL}/api/goods?search=${search}`, {
-//   method: 'get',
-//   callback,
-// });
+
+export const getDataSearch = (callback, search) => fetchRequest(`${URL}/api/goods?search=${search}`, {
+  method: 'get',
+  callback,
+});
 
 // export const fetchRequest = async (url, {
 //   method = 'get',
@@ -88,6 +93,12 @@ export const getGoodsId = (callback, id) => fetchRequest(`${URL}/api/goods/${id}
 //     return callback(err);
 //   }
 // };
+
+export const getDataBlog = async (url, search = '') => {
+  const result = await fetch(`${url}?${search}`);
+  const data = await result.json();
+  return data;
+};
 
 export const getDataArticle = async (url, id = '') => {
   const result = await fetch(`${url}/${id}`);

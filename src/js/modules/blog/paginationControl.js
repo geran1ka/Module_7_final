@@ -1,9 +1,9 @@
 import {API_URL_POST} from '../../helper/const.js';
-import {getDataArticle} from '../serviceAPI.js';
+import {getDataArticle, getDataBlog} from '../serviceAPI.js';
 import {renderBlog} from './renderBlog.js';
 
 export const paginationController = async (pagination, linkBack, linkNext, page, pages) => {
-  const url = window.location.href.slice(0, window.location.href.length - window.location.search.length);
+  const url = window.location;
 
   linkBack.addEventListener('click', async e => {
     e.preventDefault();
@@ -21,12 +21,14 @@ export const paginationController = async (pagination, linkBack, linkNext, page,
   pagination.addEventListener('click', async e => {
     e.preventDefault();
     if (e.target.closest('.blog-pagination__link')) {
-      renderBlog(await getDataArticle(API_URL_POST, `?page=${page}`));
-      window.location.assign(`${url}?page=${page}`);
+      console.log('page: ', page);
+
+      renderBlog(await getDataBlog(API_URL_POST, `?page=${page}`));
+      url.hash = `#blog?page=${page}`;
     }
 
     if (e.target.closest('.blog-pagination__item')) {
-      console.log(e.target.textContent);
+      console.log('e.target.textContent', e.target.textContent);
       renderBlog(await getDataArticle(API_URL_POST, `?page=${e.target.textContent}`));
       window.location.assign(`${url}?page=${e.target.textContent}`);
     }

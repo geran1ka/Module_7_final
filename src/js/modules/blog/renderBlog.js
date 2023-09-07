@@ -47,7 +47,7 @@ export const renderBlog = (data) => {
               }, {
                 append: createElement('a', {
                   className: 'blog-article__title-link',
-                  href: `article.html?id=${item.id}`,
+                  href: `#blog/article?id=${item.id}`,
                   textContent: `${item.title}`,
                 }),
               }),
@@ -108,7 +108,6 @@ export const renderBlog = (data) => {
   blogList.append(...itemList);
   blogContent.append(blogList);
   container.append(blogContent, pagination);
-  // const urlPageBlog = window.location.href;
 
   return section;
 };

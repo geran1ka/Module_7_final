@@ -1,17 +1,6 @@
 import {createElement} from '../../helper/createElement.js';
 import {getGoodsCategory} from '../serviceAPI.js';
-import {createGoodsItem} from './createGoodsItem.js';
-
-const render = (err, array) => {
-  if (err) {
-    console.warn(err);
-    return;
-  }
-
-
-  return array.map(item => createGoodsItem(item));
-};
-
+import {renderProductList} from '../product/renderProductList.js';
 
 export const renderShop = (category) => {
   const section = createElement('section', {
@@ -34,7 +23,7 @@ export const renderShop = (category) => {
   container.append(title, categoryGoodsList);
   section.append(container);
 
-  getGoodsCategory(render, category)
+  getGoodsCategory(renderProductList, category)
       .then(array => categoryGoodsList.append(...array));
 
   return section;

@@ -1,5 +1,5 @@
 export const fetchRequest = async (url, {
-  method = 'get',
+  method = 'GET',
   callback,
   body,
   headers,
@@ -21,6 +21,7 @@ export const fetchRequest = async (url, {
     }
     throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
   } catch (err) {
+    console.log('err: ', err);
     return callback(err);
   }
 };
