@@ -1,5 +1,5 @@
-// const URL = 'https://dazzling-rain-account.glitch.me';
-const URL = 'http://localhost:3000';
+const URL = 'https://dazzling-rain-account.glitch.me';
+// const URL = 'http://localhost:3000';
 const API_URL_POST = 'https://gorest.co.in/public-api/posts';
 const API_URL_USER = 'https://gorest.co.in/public-api/user';
 const API_URL_USERS = 'https://gorest.co.in/public-api/users';
@@ -15,6 +15,8 @@ const iconMenuBtnHeader = document.querySelector('.icon');
 const cartCountItem = document.querySelector('.nav-list__svg_count');
 const searchForm = document.querySelector('.header__form');
 const search = searchForm.search;
+const headerBread = document.querySelector('.header__bread');
+console.log('headerBread: ', headerBread);
 
 export {
   URL,
@@ -30,4 +32,5 @@ export {
   cartCountItem,
   searchForm,
   search,
+  headerBread,
 };

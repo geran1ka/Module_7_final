@@ -1,8 +1,15 @@
 import {createElement} from '../../helper/createElement.js';
+import {createError} from '../../helper/createError.js';
+import { createBreadCrumbs } from '../bread/createBreadCrumbs.js';
 import {paginationController} from './paginationControl.js';
 import {renderPagination} from './renderPagination.js';
 
-export const renderBlog = (data) => {
+export const renderBlog = (err, data) => {
+  if (err) {
+    console.warn(err);
+    return createError(err);
+  }
+  createBreadCrumbs(data);
   const section = createElement('section', {
     className: 'blog',
   });
@@ -47,7 +54,7 @@ export const renderBlog = (data) => {
               }, {
                 append: createElement('a', {
                   className: 'blog-article__title-link',
-                  href: `#blog/article?id=${item.id}`,
+                  href: `#blog/${item.id}`,
                   textContent: `${item.title}`,
                 }),
               }),

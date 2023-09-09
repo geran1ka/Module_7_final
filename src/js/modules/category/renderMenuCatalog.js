@@ -7,12 +7,12 @@ const createItemCatalogMenu = (title) => {
   }, {
     append: createElement('a', {
       className: 'menu__catalog-link',
-      href: `#shop/${title}`,
+      href: `#catalog/${title}`,
       textContent: title,
     }, {
       cb(elem) {
         elem.addEventListener('click', () => {
-          console.log('clicl3');
+          console.log('click');
         });
       },
     }),
@@ -26,13 +26,13 @@ export const renderMenuCatalogHeader = (array) => {
   if (render) {
     catalogListHeader.textContent = '';
     render = false;
-    return catalogListHeader.append(...array.map(item => createItemCatalogMenu(item.category)));
+    return catalogListHeader.append(...array.map(item => createItemCatalogMenu(item)));
   }
   return;
 };
 
 export const renderMenuCatalogFooter = (array) => {
   catalogListFooter.textContent = '';
-  return catalogListFooter.append(...array.map(item => createItemCatalogMenu(item.category)));
+  return catalogListFooter.append(...array.map(item => createItemCatalogMenu(item)));
 };
 

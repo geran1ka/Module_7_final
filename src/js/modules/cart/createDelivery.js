@@ -1,6 +1,6 @@
 import {URL} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
-import { dateDelivery } from '../../helper/dateDelivery.js';
+import {dateDelivery} from '../../helper/dateDelivery.js';
 
 export const createDelivery = (cartArray) => {
   const itemImg = cartArray.map(item => createElement('li', {
@@ -23,7 +23,7 @@ export const createDelivery = (cartArray) => {
         }),
         createElement('a', {
           className: 'delivery__link',
-          href: '#',
+          href: '#profile',
           textContent: 'Изменить',
         }),
         createElement('div', {

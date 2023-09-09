@@ -42,7 +42,6 @@ export const createCart = (cartArray) => {
   }, {
     cb(elem) {
       elem.addEventListener('click', () => {
-        console.log('delAll');
         itemCartArray.forEach((element, index) => {
           if (element.querySelector('.item-cart__checkbox').checked) {
             removeCart(cartArray[index].id);

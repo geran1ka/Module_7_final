@@ -17,10 +17,19 @@ export const searchController = () => {
       productSearch ?
         main?.append(productSearch) :
         main?.append(
-            createElement('h2', {
-              className: 'title-2',
-              textContent: `По вашему запросу ${search.value} ничего ненайдено`,
-            }));
+            createElement('section', {
+              className: 'search',
+            }, {
+              append: createElement('div', {
+                className: 'search__container container',
+              }, {
+                append: createElement('h2', {
+                  className: 'search__title title-2',
+                  textContent: `По вашему запросу ${search.value} ничего ненайдено`,
+                }),
+              }),
+            }),
+        );
       if (search.value.length === 0) {
         mainPage();
       }

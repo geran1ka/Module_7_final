@@ -3,7 +3,7 @@ import {renderProductList} from '../product/renderProductList.js';
 import {getGoodsCategory} from '../serviceAPI.js';
 import {renderGoods} from './renderGoods.js';
 
-export const goodsInit = async ([, category, id], routerData) => {
+export const goodsInit = async ([, category, id]) => {
   const list = await getGoodsCategory(renderProductList, category);
   const listGoods = [];
   list.map(element => {

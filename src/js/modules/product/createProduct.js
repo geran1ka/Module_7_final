@@ -17,7 +17,7 @@ export const createProduct = (item) => {
       }),
       createElement('a', {
         className: 'product__img-wrapper',
-        href: `#shop/${item.category}/${item.id}`,
+        href: `#catalog/${item.category}/${item.id}`,
       }, {
         appends: [
           createElement('img', {

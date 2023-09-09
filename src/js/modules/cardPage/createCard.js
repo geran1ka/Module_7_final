@@ -1,21 +1,28 @@
-import {URL, cartCountItem} from '../../helper/const.js';
+import {URL} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
+import {createError} from '../../helper/createError.js';
 import {dateDelivery} from '../../helper/dateDelivery.js';
 import {loanCalculation} from '../../helper/loanСalculation.js';
+import { createBreadCrumbs } from '../bread/createBreadCrumbs.js';
 import {addCart, getCart, removeCart} from '../cart/cartController.js';
 import {addFavorite, getFavorite, removeFavorite} from '../favoriteController.js';
 
 export const createCard = (err, data) => {
+  console.log('data: ', data);
+  if (err) {
+    console.warn(err);
+    createError(err);
+    return;
+  }
   const getCheckItemCart = (id) => {
     const listCart = getCart();
     return listCart.some(item => item.id === id);
   };
   getCheckItemCart(data.id);
 
-  if (err) {
-    console.warn(err);
-    return;
-  }
+  createBreadCrumbs(data);
+
+
   const card = createElement('section', {
     className: 'card',
   }, {

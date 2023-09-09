@@ -1,4 +1,5 @@
 import {main} from '../helper/const.js';
+import { createBreadCrumbs } from './bread/createBreadCrumbs.js';
 import {renderGoods} from './goods/renderGoods.js';
 import {renderProductList} from './product/renderProductList.js';
 
@@ -24,6 +25,7 @@ export const removeFavorite = (id) => {
 
 export const favoriteController = async () => {
   main.textContent = '';
+  createBreadCrumbs();
   const listId = getFavorite();
   const list = renderProductList(null, listId);
   const goods = renderGoods('Избранное', list);

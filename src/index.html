@@ -47,7 +47,7 @@
   
           <navigation class="header__menu menu">
             <div class="menu__catalog">
-              <h3 class="menu__catalog-title"><span>Каталог</span></h3>
+              <h3 class="menu__catalog-title"><a href="#catalog">Каталог</a></h3>
               <ul class="menu__catalog-list header__catalog-list">
       
               </ul>
@@ -95,7 +95,7 @@
           <div class="header__navigation">
             <ul class="header__nav-list nav-list">
               <li class="header__nav-item">
-                <a class="nav-list__link" href="#" aria-label="Перейти в профиль">
+                <a class="nav-list__link" href="#profile" aria-label="Перейти в профиль">
                   <svg class="nav-list__svg" width="36" height="36" viewBox="0 0 36 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_2903_20)">
                     <path d="M18 18C21.315 18 24 15.315 24 12C24 8.685 21.315 6 18 6C14.685 6 12 8.685 12 12C12 15.315 14.685 18 18 18ZM18 21C13.995 21 6 23.01 6 27V30H30V27C30 23.01 22.005 21 18 21Z"/>
@@ -105,7 +105,7 @@
                 </a>
               </li>
               <li class="header__nav-item">
-                <a class="nav-list__link" href="#shop/cart" aria-label="Перейти в корзину">
+                <a class="nav-list__link" href="#cart" aria-label="Перейти в корзину">
                   <div class="nav-list__svg-wrapper">
                     <svg class="nav-list__svg" width="36" height="36" viewBox="0 0 36 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_2903_25)">
@@ -135,205 +135,11 @@
           </div>
   
         </div>
+        <div class="header__bread bread"></div>
       </div>
     </header>
   
-    <main class="main">
-      <!-- <section class="shop">
-        <div class="container shop__container">
-
-          <div class="shop__cart cart shop__style-all">
-            <div class="cart__container">
-              <div class="cart__title-wrapper">
-                <h2 class="cart__title title-2">Корзина</h2>
-                <p class="cart__title-count">2</p>
-              </div>
-              <div class="cart__content-wrapper">
-                <div class="cart__content-top cart__row-line">
-                  <label for="сhooseAll" class="cart__label">
-                    <input type="checkbox" name="сhooseAll" class="cart__checkbox cart__checkbox-chose-all">
-                    Выбрать все
-                  </label>
-                  <button class="cart__btn-del">
-                    <svg class="cart__icon-delete" width="30" height="30" viewBox="0 0 30 30" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_217_1895)">
-                      <path d="M19.0214 5.35355L19.1679 5.5H19.375H23.25V7H6.75V5.5H10.625H10.8321L10.9786 5.35355L12.0821 4.25H17.9179L19.0214 5.35355ZM10 25.75C8.90114 25.75 8 24.8489 8 23.75V9.25H22V23.75C22 24.8489 21.0989 25.75 20 25.75H10Z"/>
-                      </g>
-                    </svg>
-                  </button>
-                </div>
-                <div class="cart__content-down">
-                  <ul class="cart__list cart__row-line">
-                    <li class="cart__item item-cart">
-                      <input type="checkbox" name="product" class="item-cart__checkbox cart__checkbox">
-                      <img src="./img/cart/1.jpg" alt="" class="item-cart__img">
-                      <div class="item-cart__info-product">
-                        <div class="item-cart__info-wrapper">
-                          <h3 class="item-cart__title">15.6" Игровой ноутбук ASUS G513IE-HN004T</h3>
-                          <div class="item-cart__description">
-                            <p>Цвет: <span>черный</span></p>
-                            <p>Оперативная память: <span>16 ГБ</span></p>
-                          </div>
-                        </div>
-
-                      <div class="item-cart__count-wrapper">
-                        <button type="button" class="item-cart__btn-count item-cart__btn-count_minus">-</button>
-                        <span class="item-cart__count">1</span>
-                        <button type="button" class="item-cart__btn-count item-cart__btn-count_plus">+</button>
-                        <input type="hidden" class="visually-hidden" form="info__form">
-                      </div>
-                      <div class="item-cart__price-wrapper">
-                        <p class="item-cart__price">109 090 ₽</p>
-                        <p class="item-cart__old-price">140 590 ₽</p>
-                        <p class="item-cart__credit-price">В кредит от 5600 ₽</p>
-                      </div>
-                    </div>
-
-                    <button class="cart__btn-del item-cart__btn-del">
-                      <svg class="cart__icon-delete" width="30" height="30" viewBox="0 0 30 30" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_217_1895)">
-                        <path d="M19.0214 5.35355L19.1679 5.5H19.375H23.25V7H6.75V5.5H10.625H10.8321L10.9786 5.35355L12.0821 4.25H17.9179L19.0214 5.35355ZM10 25.75C8.90114 25.75 8 24.8489 8 23.75V9.25H22V23.75C22 24.8489 21.0989 25.75 20 25.75H10Z"/>
-                        </g>
-                      </svg>
-                    </button>
-                    </li>
-
-                    <li class="cart__item item-cart">
-                      <input type="checkbox" name="product" class="item-cart__checkbox cart__checkbox">
-                      <img src="./img/cart/1.jpg" alt="" class="item-cart__img">
-                      <div class="item-cart__info-product">
-                        <div class="item-cart__info-wrapper">
-                          <h3 class="item-cart__title">15.6" Игровой ноутбук ASUS G513IE-HN004T</h3>
-                          <div class="item-cart__description">
-                            <p>Цвет: <span>черный</span></p>
-                            <p>Оперативная память: <span>16 ГБ</span></p>
-                          </div>
-                        </div>
-
-                      <div class="item-cart__count-wrapper">
-                        <button type="button" class="item-cart__btn-count item-cart__btn-count_minus">-</button>
-                        <span class="item-cart__count">1</span>
-                        <button type="button" class="item-cart__btn-count item-cart__btn-count_plus">+</button>
-                        <input type="hidden" class="visually-hidden" form="info__form">
-                      </div>
-                      <div class="item-cart__price-wrapper">
-                        <p class="item-cart__price">109 090 ₽</p>
-                        <p class="item-cart__old-price">140 590 ₽</p>
-                        <p class="item-cart__credit-price">В кредит от 5600 ₽</p>
-                      </div>
-                    </div>
-
-                    <button class="cart__btn-del item-cart__btn-del">
-                      <svg class="cart__icon-delete" width="30" height="30" viewBox="0 0 30 30" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_217_1895)">
-                        <path d="M19.0214 5.35355L19.1679 5.5H19.375H23.25V7H6.75V5.5H10.625H10.8321L10.9786 5.35355L12.0821 4.25H17.9179L19.0214 5.35355ZM10 25.75C8.90114 25.75 8 24.8489 8 23.75V9.25H22V23.75C22 24.8489 21.0989 25.75 20 25.75H10Z"/>
-                        </g>
-                      </svg>
-                    </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="shop__delivery delivery shop__style-all">
-            <div class="delivery__container">
-              <h2 class="delivery__title title-2">Способ доставки</h2>
-              <a href="#" class="delivery__link">Изменить</a>
-              <div class="delivery__point-wrapper delivery__two-column delivery__row">
-                <p class="delivery__point delivery__text-static">Пункт выдачи</p>
-                <p class="delivery__address delivery__text-dinamic">г. Москва (Московская область), улица Павлика Морозова, д. 48, (Пункт выдачи), Ежедневно 10:00-21:00</p>
-              </div>
-              <div class="delivery__price-wrapper delivery__two-column">
-                <p class="delivery__price-info delivery__text-static">Стоимость доставки</p>
-                <p class="delivery__price delivery__text-dinamic">Бесплатно</p>
-              </div>
-
-              <div class="delivery__info-wrapper delivery__two-column">
-                <p class="delivery__info-date delivery__text-dinamic"><span>10</span>-<span>13</span>февраля</p>
-                <ul class="delivery__info-list">
-                  <li class="delivery__info-item">
-                    <img src="./img/cart/1.jpg" alt="">
-                  </li>
-
-                  <li class="delivery__info-item">
-                    <img src="./img/cart/2.jpg" alt="">
-                  </li>
-                </ul>
-              </div>
-
-              
-            </div>
-          </div>
-
-          <div class="shop__info info shop__style-all">
-            <div class="info__container">
-              <h3 class="info__product-all-price">
-                <span>Итого:</span>
-                <span>112 992 ₽</span>
-              </h3>
-              <div class="info__content">
-                <div class="info__product-wrapper">
-                  <div class="info__product">
-                    <div class="info__product-count">
-                      <p class="info__text">Товары, 2 шт.</p>
-                      <p class="info__text">145 080 ₽</p>
-                    </div>
-  
-                    <div class="info__product-discount">
-                      <p class="info__text">Скидка</p>
-                      <p class="info__text">32 088 ₽</p>
-                    </div>
-  
-                    <div class="info__product-delivery">
-                      <p class="info__text">Доставка</p>
-                      <p class="info__text">Бесплатно</p>
-                    </div>
-  
-                  </div>
-                </div>
-
-                <div class="info__delivery-wrapper">
-                  <h4 class="info__delivery-subtitle info__subtitle">Доставка: 
-                    <a href="#" class="info__link info__link_point">Пункт выдачи</a>
-                  </h4>
-                  <input type="hidden" name="info__point " class="info__form">
-                  <div class="info__delivery">
-                    <p class="info__text">Ежедневно 10:00 - 21:00</p>
-                    <p class="info__text">г. Москва (Московская область), улица Павлика Морозова, д. 48</p>
-                  </div>
-                </div>
-
-                <div class="info__date-wrapper">
-                  <h4 class="info__delivery-subtitle info__subtitle">Дата:
-                    <a href="#" class="info__link info__link_point">10-13 февраля</a>
-                  </h4>
-                  <input type="hidden" name="info__date" class="info__form">
-                </div>
-
-                <div class="info__pay-wrapper">
-                  <h4 class="info__delivery-subtitle info__subtitle">Оплата:
-                    <a href="#" class="info__link info__link_point">Картой</a>
-                  </h4>
-                  <input type="hidden" name="info__pay" class="info__form">
-                </div>
-              </div>
-
-              <form id="info__form" name="info__form" class="info__form">
-                <button class="info__form-btn" type="submit">Заказать</button>
-              </form>
-
-              <div class="info__offer-wrapper">
-                <input class="info__offer-checkbox cart__checkbox" type="checkbox" name="offer" id="offer" form="info__form">
-                <p class="info__offer-text">Согласен с условиями <span>правил пользования торговой площадкой и правилами возврата</span></p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section> -->
-    </main>
+    <main class="main"></main>
     
     <footer class="footer">
       <div class="container footer__container">
@@ -345,7 +151,7 @@
         </a>
   
         <div class="footer__catalog ">
-          <h3 class="footer__catalog-title"><span>Каталог</span></h3>
+          <h3 class="footer__catalog-title"><a href="#catalog">Каталог</a></h3>
           <ul class="footer__catalog-list menu__catalog-list"></ul>
         </div>
         <div class="footer__info">
@@ -362,7 +168,7 @@
               <a href="#" class="footer__info-link">Условия возврата заказа</a>
             </li>
             <li class="footer__info-item">
-              <a href="#blog" class="footer__info-link">Блог</a>
+              <a href="#Блог" class="footer__info-link">Блог</a>
             </li>
           </ul>
         </div>

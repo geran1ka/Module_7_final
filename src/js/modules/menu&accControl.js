@@ -39,8 +39,10 @@ export const menuControll = () => {
 
       e.target.closest('.menu__catalog-link') ||
       e.target.closest('.menu__info-link') ||
-      e.target.closest('.menu__contacts-link')
+      e.target.closest('.menu__contacts-link') ||
+      e.target.closest('.menu__catalog-title')
     ) {
+      console.log(e.target);
       closeMenuA();
     }
   });
@@ -70,6 +72,7 @@ export const controllAccordeon = () => {
   }
 
   window.addEventListener('resize', () => {
+    closeMenuA();
     if (window.innerWidth <= 640) {
       accordionInit(catalog, 'footer__accord-icon');
       accordionInit(info, 'footer__accord-icon');

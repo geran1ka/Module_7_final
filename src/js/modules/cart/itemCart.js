@@ -126,7 +126,7 @@ export const itemCart = (cartArray) => cartArray.map(item => {
                 className: 'item-cart__title',
               }, {
                 append: createElement('a', {
-                  href: `#shop/${item.category}/${item.id}`,
+                  href: `#catalog/${item.category}/${item.id}`,
                   textContent: item.title,
                 }),
               }),

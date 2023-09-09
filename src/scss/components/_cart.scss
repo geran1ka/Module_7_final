@@ -1,0 +1,215 @@
+.cart {
+    
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include laptop{
+      gap: 13px;
+    }
+
+    @include tablet{
+    } 
+
+    @include mobile{
+    }
+  }
+  
+  &__title-wrapper {
+    display: flex;
+    gap: 4px;
+
+    
+    @include laptop{
+      gap: 8px;
+    }
+
+    @include tablet{
+      gap: 3px;
+    } 
+
+    @include mobile{
+      gap: 2px;
+    }
+  }
+  
+  &__title {
+    font-size: 50px;
+    
+    @include laptop{
+      font-size: 40px;
+    }
+
+    @include tablet{
+      font-size: 28px;
+    }
+
+    @include mobile{
+      font-size: 18px;
+    }
+  }
+  
+  &__title-count {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 130%;
+    
+    @include laptop{
+    }
+
+    @include tablet{
+      font-size: 16px;
+    }
+
+    @include mobile{
+      font-size: 12px;
+    }
+  }
+  
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+
+    @include laptop{
+      gap: 51px;
+    }
+
+    @include tablet{
+    }
+
+    @include mobile{
+      gap: 35px;
+    }
+  }
+  
+  &__content-top {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    gap: 16px;
+
+    &::after {
+      @extend %lineGray;
+      content: '';
+      bottom: -21px;
+
+
+      @include laptop{
+        bottom: -31px;
+      }
+
+      @include tablet{
+      }
+
+      @include mobile{
+        bottom: -20 px;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 130%;
+
+    @include laptop{
+
+    }
+
+    @include tablet{
+      font-size: 14px;
+    }
+
+    @include mobile{
+      gap: 6px;
+      font-size: 12px;
+    }
+  }
+  
+  &__checkbox {
+    order: -1;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+  }
+  
+  &__btn-del {
+    background-color: transparent;
+    border: none; 
+    color: $black;
+    width: 30px;
+    height: 30px;
+
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &:focus {
+      color: $blue-focus;
+    }
+
+    &:active {
+      color: $blue;
+    }
+
+    &:disabled .cart__icon-delete{
+      color: $light-gray;
+    }
+
+    @include tablet{
+      display: none;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  &__icon-delete {
+
+  }
+  
+  &__content-down {
+
+  }
+  
+  &__list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include tablet{
+      gap: 41px;
+    }
+
+    @include mobile{
+      gap: 31px;
+    }
+  }
+  
+  &__item {
+    display: grid;
+    grid-template-columns: max-content max-content 1fr;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet{
+      grid-template-columns: max-content 1fr;
+      grid-template-rows: max-content max-content;
+    }
+
+    &:not(:last-child)::after {
+      @extend %lineGray;
+      @include tablet{
+        content: '';
+        bottom: -22px;
+      }
+    }
+  }
+}
