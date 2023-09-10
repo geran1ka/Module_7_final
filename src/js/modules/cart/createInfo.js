@@ -176,7 +176,6 @@ export const createInfo = (cartArray) => {
               name: 'offer',
               type: 'checkbox',
               id: 'offer',
-              // form: 'info__form',
             }),
             createElement('label', {
               className: 'info__offer-text',

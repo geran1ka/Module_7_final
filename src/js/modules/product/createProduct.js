@@ -1,7 +1,10 @@
 import {URL} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
+import {overlayImgLoad} from '../../helper/overlayLoadImg.js';
 
 export const createProduct = (item) => {
+  const preload = overlayImgLoad();
+
   const li = createElement('li', {
     className: 'goods__item',
     id: item.id,
@@ -20,13 +23,25 @@ export const createProduct = (item) => {
         href: `#catalog/${item.category}/${item.id}`,
       }, {
         appends: [
+          preload,
           createElement('img', {
             className: 'product__img',
             loading: 'lazy',
             src: item.image === 'image/notimage.jpg' ? '../../../img/notimage.jpg' : `${URL}/${item.image}`,
             alt: item.title,
-            width: '420px',
-            height: '295px',
+            width: '420',
+            height: '295',
+          }, {
+            cb(elem) {
+              elem.addEventListener('load', () => {
+                preload.remove();
+              });
+
+              elem.addEventListener('error', () => {
+                elem.setAttribute('src', '/img/no-photo.jpg');
+                preload.remove();
+              });
+            },
           }),
           createElement('span', {
             className: item.discount ? 'product__discount discount' : 'none',
@@ -40,7 +55,8 @@ export const createProduct = (item) => {
         appends: [
           createElement('p', {
             className: 'product__price',
-            textContent: item.discount ? `${(item.price - (item.price * item.discount / 100))} ₽` : `${item.price} ₽`,
+            textContent: item.discount ?
+              `${Math.round(item.price - (item.price * item.discount / 100))} ₽` : `${item.price} ₽`,
           }),
           createElement('p', {
             className: 'product__price-discount',

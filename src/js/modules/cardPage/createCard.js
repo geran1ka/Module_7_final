@@ -3,12 +3,12 @@ import {createElement} from '../../helper/createElement.js';
 import {createError} from '../../helper/createError.js';
 import {dateDelivery} from '../../helper/dateDelivery.js';
 import {loanCalculation} from '../../helper/loanСalculation.js';
+import { overlayImgLoad } from '../../helper/overlayLoadImg.js';
 import { createBreadCrumbs } from '../bread/createBreadCrumbs.js';
 import {addCart, getCart, removeCart} from '../cart/cartController.js';
 import {addFavorite, getFavorite, removeFavorite} from '../favoriteController.js';
 
 export const createCard = (err, data) => {
-  console.log('data: ', data);
   if (err) {
     console.warn(err);
     createError(err);
@@ -22,6 +22,7 @@ export const createCard = (err, data) => {
 
   createBreadCrumbs(data);
 
+  const preload = overlayImgLoad();
 
   const card = createElement('section', {
     className: 'card',
@@ -36,16 +37,33 @@ export const createCard = (err, data) => {
         }),
         createElement('div', {
           className: 'card__img-wrapper',
-          innerHTML: `
-            <img 
-              class="card__img" .
-              src="${URL}/${data.image}" 
-              alt="${data.title}" 
-              width="757px" 
-              height="427px"
-            >
-            ${data.discount ? `<p class="discount card__discount">${data.discount}%</p>` : ''}
-          `,
+
+        }, {
+          appends: [
+            preload,
+            createElement('img', {
+              className: 'card__img',
+              loading: 'lazy',
+              src: data.image === 'image/notimage.jpg' ? '../../../img/notimage.jpg' : `${URL}/${data.image}`,
+              alt: data.title,
+              width: '757',
+              height: '427',
+              innerHTML: `
+                ${data.discount ? `<p class="discount card__discount">${data.discount}%</p>` : ''}
+              `,
+            }, {
+              cb(elem) {
+                elem.addEventListener('load', () => {
+                  preload.remove();
+                });
+  
+                elem.addEventListener('error', () => {
+                  elem.setAttribute('src', '/img/no-photo.jpg');
+                  preload.remove();
+                });
+              },
+            }),
+          ],
         }),
         createElement('div', {
           className: 'card__book',
@@ -62,7 +80,7 @@ export const createCard = (err, data) => {
                     createElement('span', {
                       className: data.discount ? 'card__price-new' : 'card__price-new card__price-new_black',
                       textContent: data.discount ?
-                        `${(data.price - (data.price * data.discount / 100))} ₽` :
+                        `${Math.round(data.price - (data.price * data.discount / 100))} ₽` :
                         `${data.price} ₽`,
                     }),
                     createElement('span', {

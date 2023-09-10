@@ -1,12 +1,69 @@
 import {main} from '../helper/const.js';
-import {renderGoods} from './goods/renderGoods.js';
-import {renderProductList} from './product/renderProductList.js';
-import {getDataSearch} from './serviceAPI.js';
+import {createElement} from '../helper/createElement.js';
+import {createError} from '../helper/createError.js';
+import {getCategory} from './serviceAPI.js';
+
+// export const categoryController = async () => {
+//   const list = await getDataSearch(renderProductList);
+//   console.log('list: ', list);
+//   main.textContent = '';
+//   const productSearch = renderGoods(`Каталог`, list);
+//   main?.append(productSearch);
+// };
+
+const createCatalog = (title) => {
+  const li = createElement('li', {
+    className: 'catalog__item',
+  }, {
+    append: createElement('a', {
+      className: 'catalog__link',
+      href: `#catalog/${title}`,
+      textContent: title,
+    }, {
+      cb(elem) {
+        elem.addEventListener('click', () => {
+          console.log('click');
+        });
+      },
+    }),
+  });
+  return li;
+};
+
+const renderCatalog = (err, array) => {
+  if (err) {
+    console.warn(err);
+    createError(err);
+    return;
+  }
+
+  const list = array.sort().map(item => createCatalog(item));
+  console.log('list: ', list);
+
+  return createElement('section', {
+    className: 'catalog',
+  }, {
+    append: createElement('div', {
+      className: 'catalog__container container',
+    }, {
+      appends: [
+        createElement('h2', {
+          className: 'catalog__title title-2',
+          textContent: 'Каталог',
+        }),
+        createElement('ul', {
+          className: 'catalog__list',
+        }, {
+          appends: [...list],
+        }),
+      ],
+    }),
+  });
+};
 
 export const categoryController = async () => {
-  const list = await getDataSearch(renderProductList);
-  console.log('list: ', list);
+  const catalog = await getCategory(renderCatalog);
   main.textContent = '';
-  const productSearch = renderGoods(`Каталог`, list);
-  main?.append(productSearch);
+  // const productSearch = renderCatalog(`Каталог`, list);
+  main?.append(catalog);
 };

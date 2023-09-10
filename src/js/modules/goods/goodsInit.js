@@ -6,8 +6,9 @@ import {renderGoods} from './renderGoods.js';
 export const goodsInit = async ([, category, id]) => {
   const list = await getGoodsCategory(renderProductList, category);
   const listGoods = [];
-  list.map(element => {
-    if (element.id !== id) listGoods.push(element);
+  list.map((item, index) => {
+    if (index > 6) return;
+    if (item.id !== id) listGoods.push(item);
   });
 
   const goods = renderGoods('Рекомендуем также', listGoods);

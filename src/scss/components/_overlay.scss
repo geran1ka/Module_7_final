@@ -15,4 +15,37 @@
   @include tablet {
     align-items: start;
   }
+
+  & .cirlcle {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.overlay-load {
+  left: 0;
+  top: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-load svg {
+  max-width: 100px;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
 }

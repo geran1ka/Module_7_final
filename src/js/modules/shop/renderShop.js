@@ -4,20 +4,20 @@ import {renderProductList} from '../product/renderProductList.js';
 
 export const renderShop = (category) => {
   const section = createElement('section', {
-    className: 'category-goods goods-discount',
+    className: 'category-goods',
   });
 
   const container = createElement('div', {
-    className: 'container category-goods__container goods-discount__container',
+    className: 'container category-goods__container',
   });
 
   const title = createElement('h2', {
-    className: 'category-goods__title title-2 goods-discount__title',
+    className: 'category-goods__title title-2',
     textContent: category,
   });
 
   const categoryGoodsList = createElement('ul', {
-    className: 'category-goods__list goods-discount__list',
+    className: 'category-goods__list',
   });
 
   container.append(title, categoryGoodsList);

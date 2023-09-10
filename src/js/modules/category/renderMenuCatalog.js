@@ -26,13 +26,13 @@ export const renderMenuCatalogHeader = (array) => {
   if (render) {
     catalogListHeader.textContent = '';
     render = false;
-    return catalogListHeader.append(...array.map(item => createItemCatalogMenu(item)));
+    return catalogListHeader.append(...array.sort().map(item => createItemCatalogMenu(item)));
   }
   return;
 };
 
 export const renderMenuCatalogFooter = (array) => {
   catalogListFooter.textContent = '';
-  return catalogListFooter.append(...array.map(item => createItemCatalogMenu(item)));
+  return catalogListFooter.append(...array.sort().map(item => createItemCatalogMenu(item)));
 };
 

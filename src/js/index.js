@@ -45,6 +45,7 @@ const init = async () => {
     router.on('blog', () => {
       const currentLocation = router.getCurrentLocation();
       blogInit(currentLocation);
+      console.log('blog');
     });
 
     router.on('blog/:id', () => {

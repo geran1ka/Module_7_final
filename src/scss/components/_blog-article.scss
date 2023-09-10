@@ -1,4 +1,5 @@
 .blog-article {
+  position: relative;
   display: flex;
   gap: 30px;
 
@@ -8,6 +9,10 @@
 
   @include mobile {
     gap: 7px;
+  }
+
+  &__img-wrapper {
+    position: relative;
   }
 
   &__img {

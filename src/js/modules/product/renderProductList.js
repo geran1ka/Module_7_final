@@ -7,5 +7,7 @@ export const renderProductList = (err, array) => {
     createError(err);
     return;
   }
+
+  
   return array.map(item => createProduct(item));
 };

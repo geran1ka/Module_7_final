@@ -1,10 +1,12 @@
 import {createElement} from '../../helper/createElement.js';
 import {createError} from '../../helper/createError.js';
-import { createBreadCrumbs } from '../bread/createBreadCrumbs.js';
+import {overlayImgLoad} from '../../helper/overlayLoadImg.js';
+import {createBreadCrumbs} from '../bread/createBreadCrumbs.js';
 import {paginationController} from './paginationControl.js';
 import {renderPagination} from './renderPagination.js';
 
 export const renderBlog = (err, data) => {
+  console.log('data: ', data);
   if (err) {
     console.warn(err);
     return createError(err);
@@ -13,6 +15,8 @@ export const renderBlog = (err, data) => {
   const section = createElement('section', {
     className: 'blog',
   });
+
+  const preload = overlayImgLoad();
 
   const container = createElement('div', {
     className: 'container blog__container',
@@ -40,10 +44,29 @@ export const renderBlog = (err, data) => {
         className: 'blog-article',
       }, {
         appends: [
-          createElement('img', {
-            className: 'blog-article__img',
-            src: item.image ? item.image : './img/blog/no-photo.jpg',
-            alt: '#',
+          createElement('div', {
+            className: 'blog-article__img-wrapper',
+          }, {
+            appends: [
+              preload,
+              createElement('img', {
+                className: 'blog-article__img',
+                src: item.image ? item.image : './img/blog/no-photo.jpg',
+                alt: '#',
+                width: '195',
+                height: '195',
+              }, {
+                cb(elem) {
+                  elem.addEventListener('load', () => {
+                    preload.remove();
+                  });
+                  elem.addEventListener('error', () => {
+                    elem.setAttribute('src', '/img/no-photo.jpg');
+                    preload.remove();
+                  });
+                },
+              }),
+            ]
           }),
           createElement('div', {
             className: 'blog-article__content-wrapper',
