@@ -47,8 +47,8 @@ export const createError = (err) => createElement('div', {
         const timerId = setTimeout(() => {
           window.location.reload();
         }, 1000);
+        clearTimeout(timerId);
       }
     });
   },
-})
-;
+});

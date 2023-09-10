@@ -1,4 +1,3 @@
-import {API_URL_POST} from '../../helper/const.js';
 import {getDataArticle, getDataBlog} from '../serviceAPI.js';
 import {renderBlog} from './renderBlog.js';
 
@@ -23,14 +22,15 @@ export const paginationController = async (pagination, linkBack, linkNext, page,
     if (e.target.closest('.blog-pagination__link')) {
       console.log('page: ', page);
 
-      renderBlog(await getDataBlog(API_URL_POST, `?page=${page}`));
+      await getDataBlog(renderBlog, `?page=${page}`);
       url.hash = `#blog?page=${page}`;
     }
 
     if (e.target.closest('.blog-pagination__item')) {
       console.log('e.target.textContent', e.target.textContent);
-      renderBlog(await getDataArticle(API_URL_POST, `?page=${e.target.textContent}`));
-      window.location.assign(`${url}?page=${e.target.textContent}`);
+      await getDataArticle(renderBlog, `?page=${e.target.textContent}`);
+
+      url.hash = `#blog?page=${e.target.textContent}`;
     }
   });
 

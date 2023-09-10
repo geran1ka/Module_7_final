@@ -64,8 +64,6 @@
     font-weight: 700;
     line-height: 130%;
 
-
-
     @include laptop {
       padding-bottom: 20px;
       margin-bottom: 50px;
@@ -230,10 +228,6 @@
       font-size: 18px; 
     }
 
-    @include tablet {
-
-    }
-
     @include mobile {
       font-size: 12px;
     }
@@ -251,10 +245,6 @@
       font-size: 14px; 
     }
 
-    @include tablet {
-
-    }
-
     @include mobile {
       font-size: 12px;
     }
@@ -267,10 +257,6 @@
 
     @include laptop {
       gap: 21px;
-    }
-
-    @include tablet {
-
     }
 
     @include mobile {
@@ -400,7 +386,6 @@
   }
   
   &__salesman {
-    // padding-top: 5px;
     color: $gray;
     font-family: Lato;
     font-size: 16px;
@@ -441,10 +426,6 @@
       font-size: 14px;
     }
   
-    @include tablet {
-      
-    }
-  
     @include mobile {
       gap: 4px;
       font-size: 8px;
@@ -471,10 +452,6 @@
     @include laptop {
       width: 22px;
       height: 22px;
-    }
-  
-    @include tablet {
-      
     }
   
     @include mobile {

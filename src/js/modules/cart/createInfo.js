@@ -43,7 +43,7 @@ export const createInfo = (cartArray) => {
                     }),
                     createElement('p', {
                       className: 'info__text',
-                      textContent: `${getTotalPrice(cartArray, false)}  ₽`, // измменить подстчет
+                      textContent: `${getTotalPrice(cartArray, false)}  ₽`,
                     }),
                   ],
                 }),
@@ -57,7 +57,7 @@ export const createInfo = (cartArray) => {
                     }),
                     createElement('p', {
                       className: 'info__text',
-                      textContent: `${getTotalPrice(cartArray) - getTotalPrice(cartArray, false)}  ₽`, // изменить
+                      textContent: `${getTotalPrice(cartArray) - getTotalPrice(cartArray, false)}  ₽`,
                     }),
                   ],
                 }),

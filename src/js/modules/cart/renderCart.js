@@ -3,7 +3,7 @@ import {main} from '../../helper/const.js';
 import {createDelivery} from './createDelivery.js';
 import {createElement} from '../../helper/createElement.js';
 import {createInfo} from './createInfo.js';
-import { createBreadCrumbs } from '../bread/createBreadCrumbs.js';
+import {createBreadCrumbs} from '../bread/createBreadCrumbs.js';
 
 export const renderCart = (cartArray) => {
   main.textContent = '';

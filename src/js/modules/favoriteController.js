@@ -1,5 +1,5 @@
 import {main} from '../helper/const.js';
-import { createBreadCrumbs } from './bread/createBreadCrumbs.js';
+import {createBreadCrumbs} from './bread/createBreadCrumbs.js';
 import {renderGoods} from './goods/renderGoods.js';
 import {renderProductList} from './product/renderProductList.js';
 

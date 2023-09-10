@@ -1,97 +1,85 @@
 .shop {
-    padding-top: 30px;
-    padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 50px;
 
+  @include laptop{
+    padding-top: 25px;
+    padding-bottom: 30px;
+  }
+
+  @include tablet{
+    padding-top: 20px;
+  }
+
+  @include mobile{
+    padding-top: 10px;
+    padding-bottom: 25px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas: 
+      'cart info'
+      'delivery info';
+    gap: 30px;
+    align-items: start;
+    
     @include laptop{
-      padding-top: 25px;
-      padding-bottom: 30px;
+      grid-template-columns: 420px 1fr;
+      grid-template-areas: 
+        'cart cart'
+        'delivery delivery'
+        'info .';
     }
 
     @include tablet{
-      padding-top: 20px;
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        'cart'
+        'delivery'
+        'info';
+        gap: 20px;
+      padding: 0;
+    }
+  }
+
+  &__style-all {
+    padding: 30px 40px;
+    border-radius: 16px;
+    background: $white;
+    box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.25);
+
+    @include laptop{
+      padding: 30px;
+    }
+
+    @include tablet{
+      padding: 30px 64px;
+      border-radius: 0;
     }
 
     @include mobile{
-      padding-top: 10px;
-      padding-bottom: 25px;
+      padding: 15px 20px;
     }
+  }
+  
+  &__cart {
+    grid-area: cart;
 
-    &__container {
-      display: grid;
-      grid-template-columns: 4fr 1fr;
-      grid-template-areas: 
-        'cart info'
-        'delivery info';
-      gap: 30px;
-      align-items: start;
-      
-      @include laptop{
-        grid-template-columns: 420px 1fr;
-        grid-template-areas: 
-          'cart cart'
-          'delivery delivery'
-          'info .';
-      }
+  }
+  
+  &__delivery {
+    grid-area: delivery;
 
-      @include tablet{
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-          'cart'
-          'delivery'
-          'info';
-          gap: 20px;
-        padding: 0;
-      }
-
-      // @include tablet{
-      //   grid-template-columns: 280px;
-      //   grid-template-areas: 
-      //     'cart'
-      //     'delivery'
-      //     'info';
-      //     gap: 20px;
-      //   padding: 0;
-      // }
-
+  }
+  
+  &__info {
+    grid-area: info;
+    @include tablet{
+      padding: 30px;
+      border-radius: 0;
     }
-
-    &__style-all {
-      padding: 30px 40px;
-      border-radius: 16px;
-      background: $white;
-      box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.25);
-
-      @include laptop{
-        padding: 30px;
-      }
-
-      @include tablet{
-        padding: 30px 64px;
-        border-radius: 0;
-      }
-
-      @include mobile{
-        padding: 15px 20px;
-      }
-    }
-    
-    &__cart {
-      grid-area: cart;
-
-    }
-    
-    &__delivery {
-      grid-area: delivery;
-
-    }
-    
-    &__info {
-      grid-area: info;
-      @include tablet{
-        padding: 30px;
-        border-radius: 0;
-      }
-
-    }
+  }
 }
   

@@ -12,6 +12,7 @@ export const renderBlog = (err, data) => {
     return createError(err);
   }
   createBreadCrumbs(data);
+  console.log('data: ', data);
   const section = createElement('section', {
     className: 'blog',
   });

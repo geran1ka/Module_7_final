@@ -16,7 +16,6 @@ const cartCountItem = document.querySelector('.nav-list__svg_count');
 const searchForm = document.querySelector('.header__form');
 const search = searchForm.search;
 const headerBread = document.querySelector('.header__bread');
-console.log('headerBread: ', headerBread);
 
 export {
   URL,

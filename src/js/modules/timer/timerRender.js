@@ -1,4 +1,4 @@
-import { createElement } from '../../helper/CreateElement.js';
+import {createElement} from '../../helper/createElement.js';
 
 export const timerRender = (timer) => {
   const timerTitle = createElement('p', {

@@ -1,6 +1,6 @@
 import {URL, cartCountItem} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
-import { getTotalCountProduct } from '../../helper/getTotalCountProduct.js';
+import {getTotalCountProduct} from '../../helper/getTotalCountProduct.js';
 import {loanCalculation} from '../../helper/loanСalculation.js';
 import {cartController, getCart, removeCart} from './cartController.js';
 
@@ -168,35 +168,5 @@ export const itemCart = (cartArray) => cartArray.map(item => {
       }),
     ],
   });
-  // btnPlusCount.addEventListener('click', () => {
-  //   count += 1;
-  //   countItemCart.textContent = count;
-  //   item.count = count;
-  //   price.textContent = `${getPrice(item)} ₽`;
-  //   priceOld.textContent = item.discount ? `${getPrice(item, false)} ₽` : '';
-  //   priceCredit.textContent = `В кредит от ${loanCalculation(getPrice(item))} ₽`;
-  //   const newCart = getCart().map(elem => {
-  //     elem.id === item.id ? elem.count = count : '';
-  //     return elem;
-  //   });
-  //   localStorage.setItem('cart', JSON.stringify(newCart));
-  //   cartController();
-  // });
-
-  // btnMinusCount.addEventListener('click', () => {
-  //   count <= 1 ? count = 1 : count -= 1;
-  //   countItemCart.textContent = count;
-  //   item.count = count;
-  //   price.textContent = `${getPrice(item)} ₽`;
-  //   priceOld.textContent = item.discount ? `${getPrice(item, false)} ₽` : '';
-  //   priceCredit.textContent = `В кредит от ${loanCalculation(getPrice(item))} ₽`;
-  //   const newCart = getCart().map(elem => {
-  //     elem.id === item.id ? elem.count = count : '';
-  //     return elem;
-  //   });
-  //   localStorage.setItem('cart', JSON.stringify(newCart));
-  //   cartController();
-  // });
-
   return li;
 });

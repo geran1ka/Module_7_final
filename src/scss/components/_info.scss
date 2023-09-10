@@ -10,9 +10,6 @@
   @include mobile {
     padding: 15px 20px;
   }
-
-  &__container {
-  }
   
   &__product-all-price {
     display: flex;
@@ -45,9 +42,6 @@
       gap: 15px;
       margin-bottom: 20px;
     }
-  }
-  
-  &__product-wrapper {
   }
   
   &__product {
@@ -100,10 +94,6 @@
     gap: 10px;
   }
   
-  &__delivery-subtitle {
-
-  }
-  
   &__subtitle {
     font-size: 16px;
     font-weight: 700;
@@ -138,12 +128,6 @@
     @include tablet {
       gap: 10px;
     }
-  }
-  
-  &__date-wrapper {
-  }
-  
-  &__pay-wrapper {
   }
   
   &__form-btn {

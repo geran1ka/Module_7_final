@@ -13,7 +13,7 @@ const month = [
   'декабря',
 ];
 
-const getTwoDigits = num => ('0' + num).slice(-2)
+const getTwoDigits = num => ('0' + num).slice(-2);
 
 export const dateDelivery = () => {
   const deliveryDateStart = new Date();
@@ -25,4 +25,4 @@ export const dateDelivery = () => {
       - ${getTwoDigits(deliveryDateEnd.getDate())}
       ${month[deliveryDateEnd.getMonth()]}`;
   }
-}
+};

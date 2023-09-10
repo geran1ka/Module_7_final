@@ -1,22 +1,22 @@
 import {headerBread} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
-import {getArrHashString} from './getArrHashString.js';
+import {getArrURL} from './getArrHashString.js';
 
 export const changeNameItemBread = (item, obj) => {
   switch (item) {
-    case 'catalog':
+    case '#catalog':
       item = 'Каталог';
       break;
-    case 'cart':
+    case '#cart':
       item = 'Корзина';
       break;
-    case 'blog':
+    case '#blog':
       item = 'Блог';
       break;
-    case 'favorite':
+    case '#favorite':
       item = 'Избранное';
       break;
-    case 'profile':
+    case '#profile':
       item = 'Профиль';
       break;
     default:
@@ -29,9 +29,9 @@ export const changeNameItemBread = (item, obj) => {
 };
 
 export const createBreadCrumbs = (data = {}) => {
-  const arrHashString = getArrHashString();
+  const arrUrl = getArrURL();
 
-  const isEmpty = !!arrHashString[0];
+  const isEmpty = !!arrUrl[0];
 
   isEmpty ? headerBread.style.display = '' : headerBread.style.display = 'none';
 
@@ -50,12 +50,12 @@ export const createBreadCrumbs = (data = {}) => {
     }),
   });
 
-  const list = arrHashString.map((item, index, array) => createElement('li', {
+  const list = arrUrl.map((item, index, array) => createElement('li', {
     className: 'bread__item',
   }, {
     append: createElement('a', {
       className: 'bread__link',
-      href: index === 0 ? `#${item}` : `#${array[index - 1]}/${item}`,
+      href: index === 0 ? `${item}` : `${array[index - 1]}/${item}`,
       textContent: changeNameItemBread(item, data),
     }),
   }));

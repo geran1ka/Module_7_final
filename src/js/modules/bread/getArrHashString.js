@@ -1,6 +1,6 @@
 import {router} from '../../router.js';
 
-export const getArrHashString = () => {
+export const getArrURL = () => {
   const currentLocation = router.getCurrentLocation();
-  return decodeURIComponent(currentLocation.hashString).split('/');
+  return decodeURIComponent(currentLocation.url).split('/');
 };

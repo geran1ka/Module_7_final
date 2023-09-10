@@ -3,14 +3,6 @@ import {createElement} from '../helper/createElement.js';
 import {createError} from '../helper/createError.js';
 import {getCategory} from './serviceAPI.js';
 
-// export const categoryController = async () => {
-//   const list = await getDataSearch(renderProductList);
-//   console.log('list: ', list);
-//   main.textContent = '';
-//   const productSearch = renderGoods(`Каталог`, list);
-//   main?.append(productSearch);
-// };
-
 const createCatalog = (title) => {
   const li = createElement('li', {
     className: 'catalog__item',
@@ -64,6 +56,5 @@ const renderCatalog = (err, array) => {
 export const categoryController = async () => {
   const catalog = await getCategory(renderCatalog);
   main.textContent = '';
-  // const productSearch = renderCatalog(`Каталог`, list);
   main?.append(catalog);
 };

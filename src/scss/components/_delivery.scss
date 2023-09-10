@@ -65,12 +65,6 @@
     }
   }
 
-  &__row {
-  }
-
-  &__point {
-  }
-
   &__text-static {
     font-size: 16px;
     font-weight: 400;
@@ -80,9 +74,6 @@
     @include tablet {
       display: none;
     }
-  }
-
-  &__address {
   }
 
   &__text-dinamic {
@@ -117,23 +108,15 @@
     }
 
     &::after {
-        @extend %lineGray;
-          bottom: 0;
-
-        @include tablet {
-          content: '';
-        }
+      @extend %lineGray;
+        bottom: 0;
+        
+      @include tablet {
+        content: '';
       }
+    }
   }
 
-  &__price-info {
-  }
-
-  &__price {
-  }
-
-  &__info-wrapper {
-  }
 
   &__info-date {
     font-weight: 700;

@@ -1,6 +1,6 @@
-import { main } from '../../helper/const.js';
+import {main} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
-import { goodsDiscountInit } from './goodsDiscountInit.js';
+import {goodsDiscountInit} from './goodsDiscountInit.js';
 
 const heroInit = () => createElement('section', {
   className: 'hero',
