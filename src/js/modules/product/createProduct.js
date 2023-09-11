@@ -3,6 +3,7 @@ import {createElement} from '../../helper/createElement.js';
 import {overlayImgLoad} from '../../helper/overlayLoadImg.js';
 
 export const createProduct = (item) => {
+  if (!item) return;
   const preload = overlayImgLoad();
 
   const li = createElement('li', {

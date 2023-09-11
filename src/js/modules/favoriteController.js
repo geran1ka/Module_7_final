@@ -1,4 +1,5 @@
 import {main} from '../helper/const.js';
+import { createElement } from '../helper/createElement.js';
 import {createBreadCrumbs} from './bread/createBreadCrumbs.js';
 import {renderGoods} from './goods/renderGoods.js';
 import {renderProductList} from './product/renderProductList.js';
@@ -27,7 +28,25 @@ export const favoriteController = async () => {
   main.textContent = '';
   createBreadCrumbs();
   const listId = getFavorite();
+  console.log('listId: ', listId);
   const list = renderProductList(null, listId);
+  console.log('list fav: ', list);
+  list.map(item => item.style.display = 'flex');
   const goods = renderGoods('Избранное', list);
-  main?.append(goods);
+  goods ?
+  main?.append(goods) :
+  main?.append(
+      createElement('section', {
+        className: 'favorite',
+      }, {
+        append: createElement('div', {
+          className: 'favorite__container container',
+        }, {
+          append: createElement('h2', {
+            className: 'favorite__title title-2',
+            textContent: `В избранном ничего нет`,
+          }),
+        }),
+      }),
+  );
 };

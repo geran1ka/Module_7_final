@@ -38,7 +38,7 @@ const init = async () => {
       }
     });
 
-    router.on('/', () => {
+    router.on('index.html', () => {
       mainPage();
     });
 

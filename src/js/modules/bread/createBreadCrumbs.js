@@ -3,20 +3,26 @@ import {createElement} from '../../helper/createElement.js';
 import {getArrURL} from './getArrHashString.js';
 
 export const changeNameItemBread = (item, obj) => {
-  switch (item) {
-    case '#catalog':
+  if (item.includes('.html')) {
+    console.log('continue');
+    return;
+  }
+
+  console.log(item.split('?'));
+  switch (item.split('?')[0]) {
+    case 'catalog':
       item = 'Каталог';
       break;
-    case '#cart':
+    case 'cart':
       item = 'Корзина';
       break;
-    case '#blog':
+    case 'blog':
       item = 'Блог';
       break;
-    case '#favorite':
+    case 'favorite':
       item = 'Избранное';
       break;
-    case '#profile':
+    case 'profile':
       item = 'Профиль';
       break;
     default:
@@ -30,6 +36,7 @@ export const changeNameItemBread = (item, obj) => {
 
 export const createBreadCrumbs = (data = {}) => {
   const arrUrl = getArrURL();
+  console.log('arrUrl: ', arrUrl);
 
   const isEmpty = !!arrUrl[0];
 
@@ -55,7 +62,7 @@ export const createBreadCrumbs = (data = {}) => {
   }, {
     append: createElement('a', {
       className: 'bread__link',
-      href: index === 0 ? `${item}` : `${array[index - 1]}/${item}`,
+      href: index === 0 ? `#${item}` : `${array[index - 1]}/${item}`,
       textContent: changeNameItemBread(item, data),
     }),
   }));

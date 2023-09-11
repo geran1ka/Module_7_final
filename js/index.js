@@ -12416,7 +12416,7 @@ const getGoodsId = (callback, id) => fetchRequest(`${URL}/api/goods/${id}`, {
   method: 'get',
   callback
 });
-const getGoodsDiscount = callback => fetchRequest(`${URL}/api/goods/discount?4`, {
+const getGoodsDiscount = callback => fetchRequest(`${URL}/api/goods/discount`, {
   method: 'get',
   callback
 });
@@ -12556,27 +12556,34 @@ const router = new navigo_min('/', {
 
 const getArrURL = () => {
   const currentLocation = router.getCurrentLocation();
-  return decodeURIComponent(currentLocation.url).split('/');
+  console.log('currentLocation: ', currentLocation);
+  // return decodeURIComponent(currentLocation.url).split('/');
+  return decodeURIComponent(currentLocation.hashString).split('/');
 };
 ;// CONCATENATED MODULE: ./src/js/modules/bread/createBreadCrumbs.js
 
 
 
 const changeNameItemBread = (item, obj) => {
-  switch (item) {
-    case '#catalog':
+  if (item.includes('.html')) {
+    console.log('continue');
+    return;
+  }
+  console.log(item.split('?'));
+  switch (item.split('?')[0]) {
+    case 'catalog':
       item = 'Каталог';
       break;
-    case '#cart':
+    case 'cart':
       item = 'Корзина';
       break;
-    case '#blog':
+    case 'blog':
       item = 'Блог';
       break;
-    case '#favorite':
+    case 'favorite':
       item = 'Избранное';
       break;
-    case '#profile':
+    case 'profile':
       item = 'Профиль';
       break;
     default:
@@ -12587,6 +12594,7 @@ const changeNameItemBread = (item, obj) => {
 };
 const createBreadCrumbs = (data = {}) => {
   const arrUrl = getArrURL();
+  console.log('arrUrl: ', arrUrl);
   const isEmpty = !!arrUrl[0];
   isEmpty ? headerBread.style.display = '' : headerBread.style.display = 'none';
   const breadList = createElement('ul', {
@@ -12607,7 +12615,7 @@ const createBreadCrumbs = (data = {}) => {
   }, {
     append: createElement('a', {
       className: 'bread__link',
-      href: index === 0 ? `${item}` : `${array[index - 1]}/${item}`,
+      href: index === 0 ? `#${item}` : `${array[index - 1]}/${item}`,
       textContent: changeNameItemBread(item, data)
     })
   }));
@@ -13447,8 +13455,10 @@ const cartController = () => {
 };
 ;// CONCATENATED MODULE: ./src/js/modules/goods/renderGoods.js
 
-const renderGoods = (title, list) => {
+const renderGoods = (title, list = []) => {
+  console.log('list: ', list);
   if (list?.length !== 0) {
+    console.log('list?.length !== 0: ', list?.length !== 0);
     return createElement('section', {
       className: 'goods'
     }, {
@@ -13466,13 +13476,13 @@ const renderGoods = (title, list) => {
       })
     });
   }
-  return false;
 };
 ;// CONCATENATED MODULE: ./src/js/modules/product/createProduct.js
 
 
 
 const createProduct = item => {
+  if (!item) return;
   const preload = overlayImgLoad();
   const li = createElement('li', {
     className: 'goods__item',
@@ -13540,6 +13550,7 @@ const renderProductList = (err, array) => {
 
 
 
+
 const getFavorite = () => JSON.parse(localStorage.getItem('favorite') || '[]');
 const addFavorite = async data => {
   const favoriteList = getFavorite();
@@ -13558,9 +13569,23 @@ const favoriteController = async () => {
   main.textContent = '';
   createBreadCrumbs();
   const listId = getFavorite();
+  console.log('listId: ', listId);
   const list = renderProductList(null, listId);
+  console.log('list fav: ', list);
+  list.map(item => item.style.display = 'flex');
   const goods = renderGoods('Избранное', list);
-  main?.append(goods);
+  goods ? main?.append(goods) : main?.append(createElement('section', {
+    className: 'favorite'
+  }, {
+    append: createElement('div', {
+      className: 'favorite__container container'
+    }, {
+      append: createElement('h2', {
+        className: 'favorite__title title-2',
+        textContent: `В избранном ничего нет`
+      })
+    })
+  }));
 };
 ;// CONCATENATED MODULE: ./src/js/modules/cardPage/createCard.js
 
@@ -13877,6 +13902,7 @@ const renderDiscountList = (err, array) => {
 
 const goodsDiscountInit = async () => {
   const list = await getGoodsDiscount(renderDiscountList);
+  console.log('list: ', list);
   return renderGoods('Это выгодно!', list);
 };
 ;// CONCATENATED MODULE: ./src/js/modules/mainPage/mainPage.js
@@ -14442,7 +14468,7 @@ const init = async () => {
         flag = false;
       }
     });
-    router.on('/', () => {
+    router.on('index.html', () => {
       mainPage();
     });
     router.on('blog', () => {

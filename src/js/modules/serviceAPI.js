@@ -16,7 +16,7 @@ export const getGoodsId = (callback, id) => fetchRequest(`${URL}/api/goods/${id}
   callback,
 });
 
-export const getGoodsDiscount = (callback) => fetchRequest(`${URL}/api/goods/discount?4`, {
+export const getGoodsDiscount = (callback) => fetchRequest(`${URL}/api/goods/discount`, {
   method: 'get',
   callback,
 });

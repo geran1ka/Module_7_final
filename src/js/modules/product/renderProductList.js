@@ -8,6 +8,5 @@ export const renderProductList = (err, array) => {
     return;
   }
 
-  
   return array.map(item => createProduct(item));
 };
