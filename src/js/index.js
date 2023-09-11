@@ -38,19 +38,17 @@ const init = async () => {
       }
     });
 
-    router.on('index.html', () => {
+    router.on('dist/index.html', () => {
       mainPage();
     });
 
     router.on('blog', () => {
       const currentLocation = router.getCurrentLocation();
       blogInit(currentLocation);
-      console.log('blog');
     });
 
     router.on('blog/:id', () => {
       const currentLocation = router.getCurrentLocation();
-      console.log('currentLocation: ', currentLocation);
       articleInit(currentLocation);
     });
 

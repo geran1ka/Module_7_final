@@ -30,7 +30,6 @@ const renderCatalog = (err, array) => {
   }
 
   const list = array.sort().map(item => createCatalog(item));
-  console.log('list: ', list);
 
   return createElement('section', {
     className: 'catalog',

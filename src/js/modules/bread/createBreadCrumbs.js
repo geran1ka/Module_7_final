@@ -3,12 +3,11 @@ import {createElement} from '../../helper/createElement.js';
 import {getArrURL} from './getArrHashString.js';
 
 export const changeNameItemBread = (item, obj) => {
-  if (item.includes('.html')) {
+  if (item.includes('dist/index.html')) {
     console.log('continue');
     return;
   }
 
-  console.log(item.split('?'));
   switch (item.split('?')[0]) {
     case 'catalog':
       item = 'Каталог';
@@ -36,7 +35,6 @@ export const changeNameItemBread = (item, obj) => {
 
 export const createBreadCrumbs = (data = {}) => {
   const arrUrl = getArrURL();
-  console.log('arrUrl: ', arrUrl);
 
   const isEmpty = !!arrUrl[0];
 
