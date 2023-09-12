@@ -38,7 +38,7 @@ const init = async () => {
       }
     });
 
-    router.on('/Module_7_final', mainPage);
+    router.on('/', mainPage);
 
     router.on('blog', () => {
       const currentLocation = router.getCurrentLocation();
