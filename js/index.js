@@ -14472,7 +14472,8 @@ const init = async () => {
         flag = false;
       }
     });
-    router.on('dist/index.html', () => {
+    router.on('/Module_7_final', () => {
+      console.log('blo');
       const currentLocation = router.getCurrentLocation();
       console.log('currentLocation: ', currentLocation);
       mainPage();
