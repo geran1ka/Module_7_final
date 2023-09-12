@@ -2,7 +2,6 @@ import {createElement} from '../../helper/createElement.js';
 
 export const renderGoods = (title, list = []) => {
   if (list?.length !== 0) {
-    console.log('list?.length !== 0: ', list?.length !== 0);
     return createElement('section', {
       className: 'goods',
     }, {

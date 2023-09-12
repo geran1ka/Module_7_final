@@ -26,8 +26,6 @@ const init = async () => {
     let flag = true;
     router.on('*', () => {
       createBreadCrumbs();
-      const currentLocation = router.getCurrentLocation();
-      console.log('currentLocation: ', currentLocation);
       if (flag) {
         cartCountItem.textContent = getTotalCountProduct(getCart());
         renderMenuCatalogHeader(data, true);
@@ -36,7 +34,6 @@ const init = async () => {
         menuControll();
         timerInit();
         controllAccordeon();
-        mainPage();
         flag = false;
       }
     });

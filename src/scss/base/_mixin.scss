@@ -4,7 +4,7 @@
     weight: $weigth;
     display: swap;
   }
-  src: local($local), ("../fonts/#{ $name-file }-#{ $weigth }.woff2") format("woff2"),
+  src: local($local), url("../fonts/#{ $name-file }-#{ $weigth }.woff2") format("woff2"),
     url("../fonts/#{ $name-file }-#{ $weigth }.woff") format("woff");
 }
 
