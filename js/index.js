@@ -12592,6 +12592,7 @@ const changeNameItemBread = (item, obj) => {
 };
 const createBreadCrumbs = (data = {}) => {
   const arrUrl = getArrURL();
+  console.log('arrUrl: ', arrUrl);
   const isEmpty = !!arrUrl[0];
   isEmpty ? headerBread.style.display = '' : headerBread.style.display = 'none';
   const breadList = createElement('ul', {
@@ -13547,6 +13548,7 @@ const renderProductList = (err, array) => {
 
 
 
+
 const getFavorite = () => JSON.parse(localStorage.getItem('favorite') || '[]');
 const addFavorite = async data => {
   const favoriteList = getFavorite();
@@ -13562,6 +13564,8 @@ const removeFavorite = id => {
   localStorage.setItem('favorite', JSON.stringify(favoriteList));
 };
 const favoriteController = async () => {
+  const currentLocation = router.getCurrentLocation();
+  console.log('currentLocation: ', currentLocation);
   main.textContent = '';
   createBreadCrumbs();
   const listId = getFavorite();
@@ -14221,7 +14225,10 @@ const controllAccordeon = () => {
 ;// CONCATENATED MODULE: ./src/js/modules/profile/profileController.js
 
 
+
 const profileController = () => {
+  const currentLocation = router.getCurrentLocation();
+  console.log('currentLocation: ', currentLocation);
   main.textContent = '';
   return createElement('section', {
     className: 'shop'
@@ -14464,19 +14471,24 @@ const init = async () => {
       }
     });
     router.on('dist/index.html', () => {
+      const currentLocation = router.getCurrentLocation();
+      console.log('currentLocation: ', currentLocation);
       mainPage();
     });
     router.on('blog', () => {
       const currentLocation = router.getCurrentLocation();
       blogInit(currentLocation);
+      console.log('currentLocation: ', currentLocation);
     });
     router.on('blog/:id', () => {
       const currentLocation = router.getCurrentLocation();
       articleInit(currentLocation);
+      console.log('currentLocation: ', currentLocation);
     });
     router.on('catalog/:category/:id', () => {
       const currentLocation = router.getCurrentLocation();
       const hash = decodeURIComponent(currentLocation.hashString).split('/');
+      console.log('currentLocation: ', currentLocation);
       cardPageInit(hash[hash.length - 1]);
       goodsInit(hash);
     });
@@ -14484,12 +14496,17 @@ const init = async () => {
       const currentLocation = router.getCurrentLocation();
       const hash = decodeURIComponent(currentLocation.hashString).split('/');
       shopInit(hash[hash.length - 1]);
+      console.log('currentLocation: ', currentLocation);
     });
     router.on('catalog', () => {
       categoryController();
+      const currentLocation = router.getCurrentLocation();
+      console.log('currentLocation: ', currentLocation);
     });
     router.on('cart', () => {
       cartController();
+      const currentLocation = router.getCurrentLocation();
+      console.log('currentLocation: ', currentLocation);
     });
     router.on('favorite', favoriteController);
     router.on('profile', profileController);

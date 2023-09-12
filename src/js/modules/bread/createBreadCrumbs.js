@@ -35,6 +35,7 @@ export const changeNameItemBread = (item, obj) => {
 
 export const createBreadCrumbs = (data = {}) => {
   const arrUrl = getArrURL();
+  console.log('arrUrl: ', arrUrl);
 
   const isEmpty = !!arrUrl[0];
 

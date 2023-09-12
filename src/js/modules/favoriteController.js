@@ -1,5 +1,6 @@
 import {main} from '../helper/const.js';
 import { createElement } from '../helper/createElement.js';
+import { router } from '../router.js';
 import {createBreadCrumbs} from './bread/createBreadCrumbs.js';
 import {renderGoods} from './goods/renderGoods.js';
 import {renderProductList} from './product/renderProductList.js';
@@ -25,6 +26,8 @@ export const removeFavorite = (id) => {
 };
 
 export const favoriteController = async () => {
+  const currentLocation = router.getCurrentLocation();
+  console.log('currentLocation: ', currentLocation);
   main.textContent = '';
   createBreadCrumbs();
   const listId = getFavorite();
