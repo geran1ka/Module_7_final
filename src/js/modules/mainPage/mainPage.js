@@ -10,7 +10,7 @@ const heroInit = () => createElement('section', {
           <h1 class="title visually-hidden ">ShopOnline</h1>
           <p class="hero__title">-50% на все ноутбуки</p>
           
-          <div class="hero__timer timer timer_disabled" data-deadline ="2023/08/28 17:29">
+          <div class="hero__timer timer timer_disabled" data-deadline ="2023/09/28 17:29">
 
           </div>
         </div>
