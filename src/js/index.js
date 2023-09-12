@@ -36,36 +36,26 @@ const init = async () => {
         menuControll();
         timerInit();
         controllAccordeon();
+        mainPage();
         flag = false;
       }
     });
 
-    router.on('/Module_7_final', () => {
-      console.log('blo');
-      const currentLocation = router.getCurrentLocation();
-      console.log('currentLocation: ', currentLocation);
-
-      mainPage();
-    });
+    router.on('/Module_7_final', mainPage);
 
     router.on('blog', () => {
       const currentLocation = router.getCurrentLocation();
       blogInit(currentLocation);
-      console.log('currentLocation: ', currentLocation);
-
     });
 
     router.on('blog/:id', () => {
       const currentLocation = router.getCurrentLocation();
       articleInit(currentLocation);
-      console.log('currentLocation: ', currentLocation);
-
     });
 
     router.on('catalog/:category/:id', () => {
       const currentLocation = router.getCurrentLocation();
       const hash = decodeURIComponent(currentLocation.hashString).split('/');
-      console.log('currentLocation: ', currentLocation);
 
       cardPageInit(hash[hash.length - 1]);
       goodsInit(hash);
@@ -75,21 +65,11 @@ const init = async () => {
       const currentLocation = router.getCurrentLocation();
       const hash = decodeURIComponent(currentLocation.hashString).split('/');
       shopInit(hash[hash.length - 1]);
-      console.log('currentLocation: ', currentLocation);
-
     });
 
-    router.on('catalog', () => {
-      categoryController();
-      const currentLocation = router.getCurrentLocation();
-      console.log('currentLocation: ', currentLocation);
-    });
+    router.on('catalog', categoryController);
 
-    router.on('cart', () => {
-      cartController();
-      const currentLocation = router.getCurrentLocation();
-      console.log('currentLocation: ', currentLocation);
-    });
+    router.on('cart', cartController);
 
     router.on('favorite', favoriteController);
 
