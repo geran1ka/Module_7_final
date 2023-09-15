@@ -42,7 +42,6 @@ export const menuControll = () => {
       e.target.closest('.menu__contacts-link') ||
       e.target.closest('.menu__catalog-title')
     ) {
-      console.log(e.target);
       closeMenuA();
     }
   });

@@ -59,7 +59,7 @@ export const createBreadCrumbs = (data = {}) => {
   }, {
     append: createElement('a', {
       className: 'bread__link',
-      href: index === 0 ? `#${item}` : `${array[index - 1]}/${item}`,
+      href: index === 0 ? `#${item}` : `#${array[index - 1]}/${item}`,
       textContent: changeNameItemBread(item, data),
     }),
   }));

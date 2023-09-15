@@ -2,7 +2,8 @@ import {URL, cartCountItem} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
 import {getTotalCountProduct} from '../../helper/getTotalCountProduct.js';
 import {loanCalculation} from '../../helper/loanСalculation.js';
-import {cartController, getCart, removeCart} from './cartController.js';
+import { getCart, removeCart } from './cartController.js';
+import { cartInit } from './cartInit.js';
 
 export const itemCart = (cartArray) => cartArray.map(item => {
   const checkDelItem = createElement('input', {
@@ -24,7 +25,7 @@ export const itemCart = (cartArray) => cartArray.map(item => {
       elem.addEventListener('click', () => {
         if (checkDelItem.checked) {
           removeCart(item.id);
-          cartController();
+          cartInit();
         }
       });
     },
@@ -72,7 +73,7 @@ export const itemCart = (cartArray) => cartArray.map(item => {
           return elem;
         });
         localStorage.setItem('cart', JSON.stringify(newCart));
-        count < 1 ? '' : cartController();
+        count < 1 ? '' : cartInit();
         cartCountItem.textContent = getTotalCountProduct(getCart());
       });
     },
@@ -96,14 +97,13 @@ export const itemCart = (cartArray) => cartArray.map(item => {
           return elem;
         });
         localStorage.setItem('cart', JSON.stringify(newCart));
-        cartController();
+        cartInit();
         cartCountItem.textContent = getTotalCountProduct(getCart());
       });
     },
   });
 
-
-  const li = createElement('li', {
+  return createElement('li', {
     className: 'cart__item item-cart',
     id: item.id,
   }, {
@@ -168,5 +168,4 @@ export const itemCart = (cartArray) => cartArray.map(item => {
       }),
     ],
   });
-  return li;
 });

@@ -1,5 +1,6 @@
 import {createElement} from '../../helper/createElement.js';
-import {cartController, removeCart} from './cartController.js';
+import {removeCart} from './cartController.js';
+import {cartInit} from './cartInit.js';
 import {itemCart} from './itemCart.js';
 
 export const createCart = (cartArray) => {
@@ -45,7 +46,7 @@ export const createCart = (cartArray) => {
         itemCartArray.forEach((element, index) => {
           if (element.querySelector('.item-cart__checkbox').checked) {
             removeCart(cartArray[index].id);
-            cartController();
+            cartInit();
           }
         });
       });

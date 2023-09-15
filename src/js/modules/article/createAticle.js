@@ -1,11 +1,6 @@
 import {createElement} from '../../helper/createElement.js';
-import {getAuthorArticle} from '../serviceAPI.js';
 
-export const createArticle = async ({data}) => {
-  const userId = data.user_id;
-
-  const authorName = await getAuthorArticle(false, userId);
-
+export const createArticle = async ({data}, authorName) => {
   const article = createElement('article', {
     className: 'article',
   }, {

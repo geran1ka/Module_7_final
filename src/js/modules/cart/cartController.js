@@ -1,6 +1,4 @@
 import {cartCountItem} from '../../helper/const.js';
-import {renderCart} from './renderCart.js';
-
 
 export const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
 
@@ -24,7 +22,3 @@ export const removeCart = (id) => {
   localStorage.setItem('cart', JSON.stringify(cartList));
 };
 
-export const cartController = () => {
-  const cartList = getCart();
-  renderCart(cartList);
-};

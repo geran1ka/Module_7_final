@@ -42,7 +42,6 @@ export const renderPagination = (data) => {
   }
 
   if (page > 1) {
-    console.log('page - 1');
     const paginationItemTwo = createElement('li', {
       className: 'blog-pagination__item',
       textContent: page - 1,

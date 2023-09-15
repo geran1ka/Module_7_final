@@ -1,12 +1,6 @@
-import {main} from '../../helper/const.js';
+import {addMainContent} from '../../helper/addMainContent.js';
 import {getGoodsId} from '../serviceAPI.js';
-import {createCard} from './createCard.js';
+import {renderCard} from './renderCard.js';
 
-export const cardPageInit = async (id) => {
-  // const hash = decodeURIComponent(currentLocation.hashString).split('/');
+export const cardPageInit = async (id) => addMainContent(await getGoodsId(renderCard, id), true);
 
-  main.textContent = '';
-
-  const cardItem = await getGoodsId(createCard, id);
-  main?.prepend(cardItem);
-};

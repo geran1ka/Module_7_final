@@ -1,7 +1,8 @@
+import {createTimer} from '../mainPage/createTimer.js';
 import {timerControl} from './timerControl.js';
 
 export const timerInit = () => {
-  const timer = document.querySelector('[data-deadline]');
+  const timer = createTimer();
 
   if (timer) {
     const deadline = new Date(timer.dataset.deadline);

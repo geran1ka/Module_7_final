@@ -1,24 +1,6 @@
-import {main} from '../../helper/const.js';
 import {createElement} from '../../helper/createElement.js';
-import {goodsDiscountInit} from './goodsDiscountInit.js';
 
-const heroInit = () => createElement('section', {
-  className: 'hero',
-  innerHTML: `
-      <div class="container hero__container">
-        <div class="hero__content">
-          <h1 class="title visually-hidden ">ShopOnline</h1>
-          <p class="hero__title">-50% на все ноутбуки</p>
-          
-          <div class="hero__timer timer timer_disabled" data-deadline ="2023/09/28 17:29">
-
-          </div>
-        </div>
-      </div>
-    `,
-});
-
-const promoCardsInit = () => createElement('section', {
+export const crteatePromoCards = () => createElement('section', {
   className: 'promo-cards',
   innerHTML: `
       <div class="container promo-cards__container">
@@ -203,14 +185,3 @@ const promoCardsInit = () => createElement('section', {
       </div>
     `,
 });
-
-
-export const mainPage = async () => {
-  main.textContent = '';
-  const hero = heroInit();
-  const promo = promoCardsInit();
-  const goodsDiscount = await goodsDiscountInit();
-
-
-  main.append(hero, promo, goodsDiscount);
-};

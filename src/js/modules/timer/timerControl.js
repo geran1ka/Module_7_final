@@ -7,7 +7,7 @@ export const timerControl = (timer, deadline) => {
   const timeZoneMinutes = (deadline.getTimezoneOffset() + 180);
 
   deadline.setMinutes(deadline.getMinutes() + timeZoneMinutes);
-  
+
   const getTimeRemeining = () => {
     const dateNow = Date.now() + timeZoneMinutes * 1000 * 60;
     const timeRemaining = deadline.getTime() - dateNow;
@@ -50,5 +50,5 @@ export const timerControl = (timer, deadline) => {
       timerElem.timerUnitsMinutes.textContent = minutes.title;
     }
   };
-  start();
+  return start();
 };
