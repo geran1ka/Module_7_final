@@ -36,7 +36,7 @@ const init = async () => {
       }
     });
 
-    router.on('/', mainPageInit);
+    router.on('/Module_7_final', mainPageInit);
 
     router.on('blog', blogInit);
 
