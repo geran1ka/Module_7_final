@@ -4,7 +4,8 @@ import {fetchRequest} from './helper/fetchRequest.js';
 import {getTotalCountProduct} from './helper/getTotalCountProduct.js';
 import {articleInit} from './modules/article/articleInit.js';
 import {blogInit} from './modules/blog/blogInit.js';
-import {createBreadCrumbs} from './modules/bread/createBreadCrumbs.js';
+import { breadInit } from './modules/bread/breadInit.js';
+import { createBreadCrumbs } from './modules/bread/createBreadCrumbs.js';
 import {cardPageInit} from './modules/cardPage/cardPageInit.js';
 import {cartController, getCart} from './modules/cart/cartController.js';
 import {renderMenuCatalogFooter, renderMenuCatalogHeader} from './modules/category/renderMenuCatalog.js';
@@ -40,15 +41,9 @@ const init = async () => {
 
     router.on('/', mainPage);
 
-    router.on('blog', () => {
-      const currentLocation = router.getCurrentLocation();
-      blogInit(currentLocation);
-    });
+    router.on('blog', blogInit);
 
-    router.on('blog/:id', () => {
-      const currentLocation = router.getCurrentLocation();
-      articleInit(currentLocation);
-    });
+    router.on('blog/:id', articleInit);
 
     router.on('catalog/:category/:id', () => {
       const currentLocation = router.getCurrentLocation();

@@ -20,14 +20,11 @@ export const paginationController = async (pagination, linkBack, linkNext, page,
   pagination.addEventListener('click', async e => {
     e.preventDefault();
     if (e.target.closest('.blog-pagination__link')) {
-      console.log('page: ', page);
-
       await getDataBlog(renderBlog, `?page=${page}`);
       url.hash = `#blog?page=${page}`;
     }
 
     if (e.target.closest('.blog-pagination__item')) {
-      console.log('e.target.textContent', e.target.textContent);
       await getDataArticle(renderBlog, `?page=${e.target.textContent}`);
 
       url.hash = `#blog?page=${e.target.textContent}`;

@@ -4,7 +4,6 @@ import {getArrURL} from './getArrHashString.js';
 
 export const changeNameItemBread = (item, obj) => {
   if (item.includes('dist/index.html')) {
-    console.log('continue');
     return;
   }
 

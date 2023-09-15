@@ -75,5 +75,9 @@ export const renderPagination = (data) => {
 
   pagination.append(linkBack, paginationList, linkNext);
 
-  return {pagination, linkBack, linkNext, page, pages};
+  pagination.linkBack = linkBack;
+  pagination.linkNext = linkNext;
+  pagination.page = page;
+  pagination.pages = pages;
+  return pagination;
 };
