@@ -16,6 +16,9 @@ const cartCountItem = document.querySelector('.nav-list__svg_count');
 const searchForm = document.querySelector('.header__form');
 const search = searchForm.search;
 const headerBread = document.querySelector('.header__bread');
+const logo = document.querySelectorAll('.logo');
+
+const deadlineTimer = '2023/09/22 17:29';
 
 export {
   URL,
@@ -32,4 +35,6 @@ export {
   searchForm,
   search,
   headerBread,
+  logo,
+  deadlineTimer,
 };

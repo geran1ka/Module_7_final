@@ -1,4 +1,4 @@
-import {URL, cartCountItem, main} from './helper/const.js';
+import {URL, cartCountItem, logo, main} from './helper/const.js';
 import {createError} from './helper/createError.js';
 import {fetchRequest} from './helper/fetchRequest.js';
 import {getTotalCountProduct} from './helper/getTotalCountProduct.js';
@@ -23,7 +23,11 @@ import {router} from './router.js';
 const init = async () => {
   try {
     const data = await fetchRequest(`${URL}/api/category/`, {method: 'get'});
+
     let flag = true;
+    const url = router.getCurrentLocation().url.split('#')[0];
+    url ? url : '';
+
     router.on('*', () => {
       breadInit();
       if (flag) {
@@ -32,11 +36,14 @@ const init = async () => {
         searchController();
         menuControll();
         controllAccordeon();
+        logo.forEach(element => {
+          element.href = `/${url}`;
+        });
         flag = false;
       }
     });
 
-    router.on('/Module_7_final', mainPageInit);
+    router.on(`/${url}`, mainPageInit);
 
     router.on('blog', blogInit);
 
